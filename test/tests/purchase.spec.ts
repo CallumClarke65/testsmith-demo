@@ -33,7 +33,4 @@ test.describe(`Complete Checkout`, () => {
 
     })
 
-    test("User blocked from completing checkout without valid shipping or payment details", async ({ page }) => {
-
-    })
 })

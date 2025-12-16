@@ -6,7 +6,8 @@ export class TestUser {
         readonly lastName: string,
         readonly email: string,
         readonly password: string,
-        readonly userId: string
+        readonly userId: string,
+        readonly locale: "en" | "de" = "en"
         ) {   
         this.displayName = `${firstName} ${lastName}`
     }

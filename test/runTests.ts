@@ -9,7 +9,7 @@ if (!environment) {
 
 try {
   execSync(`cross-env ENVIRONMENT=${environment} node --import tsx/esm ./node_modules/@playwright/test/cli.js test`
-    + `${enableUImode === 'true' ? '--ui' : ''}`, { stdio: "inherit" });
+    + `${enableUImode === 'true' ? ' --ui' : ''}`, { stdio: "inherit" });
 } catch (err) {
   console.error(`Failed to run tests against ${environment}`);
   process.exit(1);

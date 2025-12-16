@@ -1,3 +1,5 @@
 /test/node_modules
 .auth
 .i18n
+/test/test-results
+/test/playwright-report

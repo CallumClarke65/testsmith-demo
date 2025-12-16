@@ -16,7 +16,6 @@ if(process.env.ENVIRONMENT !== undefined) {
  */
 export default defineConfig({
   globalSetup: './globalSetup',
-  globalTeardown: './globalTeardown',
   testDir: './tests',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,

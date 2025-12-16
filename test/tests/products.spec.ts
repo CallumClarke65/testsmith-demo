@@ -1,16 +1,48 @@
+import { expect } from "@playwright/test";
+import { HomePage } from "../pages/homePage";
 import { test } from "../test";
 
 test.describe(`View Product List`, () => {
 
-    test("Homepage displays a list of products  with names, images, and prices", async ({ page }) => {
+    test("Homepage displays a list of products with names, images, and prices", async ({ page }) => {
 
-        // Arrange
+        const homePage = new HomePage(page);
 
-        // Act
+        // Arrange / Act
+        const productListFromApi: Product[] = await test.step('Navigate to home page', async () => {
+            const [response] = await Promise.all([
+                page.waitForResponse(resp =>
+                    resp.url().includes(`${process.env.API_BASE_URL}/products`) &&
+                    resp.status() === 200
+                ),
+                homePage.goto(),
+            ]);
 
+            return (await response.json()).data as Product[];
+        });
 
         // Assert
+        const productsDisplayed = await test.step('Retrieve displayed products', async () => {
+            return await homePage.getAllVisibleProducts()
+        })
 
+        await test.step('Verify products are correctly displayed', async () => {
+            for (const pApi of productListFromApi) {
+                await test.step(`Verify product ${pApi.id} is correctly displayed`, async () => {
+                    const productCard = productsDisplayed.find((pUi) => pApi.id === pUi.id)
+                    if (!productCard) {
+                        throw new Error(`Product ${pApi.id} not found in UI`)
+                    }
+
+                    await productCard.host.scrollIntoViewIfNeeded()
+
+                    await expect(productCard.img).toBeVisible()
+                    await expect(productCard.img).toHaveAttribute("alt", pApi.name, { ignoreCase: true })
+                    await expect(productCard.name).toHaveText(pApi.name, { ignoreCase: true })
+                    await expect(productCard.price).toContainText(String(pApi.price))
+                });
+            }
+        })
     })
 
     test("Can follow product links to a detailed product page", async ({ page }) => {
