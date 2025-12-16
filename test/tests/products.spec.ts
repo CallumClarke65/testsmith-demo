@@ -3,22 +3,22 @@ import { HomePage } from "../pages/homePage";
 import { test } from "../test";
 import { ProductDetailPage } from "../pages/productDetailPage";
 
+async function navigateToHomePageAndWaitForProductsApi(homePage: HomePage): Promise<Product[]> {
+    const productListFromApi: Product[] = await test.step('Navigate to home page', async () => {
+        const [response] = await Promise.all([
+            homePage.page.waitForResponse(resp =>
+                resp.url().includes(`${process.env.API_BASE_URL}/products`) &&
+                resp.status() === 200
+            ),
+            homePage.goto(),
+        ]);
+
+        return (await response.json()).data as Product[];
+    });
+    return productListFromApi
+}
+
 test.describe(`View Product List`, () => {
-
-    async function navigateToHomePageAndWaitForProductsApi(homePage: HomePage): Promise<Product[]> {
-        const productListFromApi: Product[] = await test.step('Navigate to home page', async () => {
-            const [response] = await Promise.all([
-                homePage.page.waitForResponse(resp =>
-                    resp.url().includes(`${process.env.API_BASE_URL}/products`) &&
-                    resp.status() === 200
-                ),
-                homePage.goto(),
-            ]);
-
-            return (await response.json()).data as Product[];
-        });
-        return productListFromApi
-    }
 
     test("Homepage displays a list of products with names, images, and prices", async ({ page }) => {
         // Arrange / Act
@@ -179,12 +179,74 @@ test.describe(`View Product Details`, () => {
 })
 
 test.describe(`Search for product`, () => {
+
+    test.use({
+      i18n: async ({ i18n }, use) => {   
+        await i18n.changeLanguage("en")
+        await use(i18n);
+      },
+    });
+
     test("Can successfully search for a valid product", async ({ page }) => {
+        // Arrange
+        const homePage = new HomePage(page)
+        const productListFromApi = await navigateToHomePageAndWaitForProductsApi(homePage)
 
+        // Act
+        // Let's pick an item from the API return and filter for that
+        const testProduct = productListFromApi[0]
+        await test.step(`Search for ${testProduct.name}`, async () => {
+            await homePage.searchInput.fill(testProduct.name)
+            await Promise.all([
+                homePage.page.waitForResponse(resp =>
+                    resp.url().includes(`${process.env.API_BASE_URL}/products/search`) &&
+                    resp.status() === 200
+                ),
+                homePage.searchSubmit.click()
+            ])
+        })
+
+        // Assert
+        const productsDisplayed = await test.step('Retrieve displayed products', async () => {
+            return await homePage.getAllVisibleProducts()
+        })
+
+        await test.step(`Verify that each displayed product contains ${testProduct.name} in its name`, async () => {
+            for (const product of productsDisplayed) {
+                await expect(product.name).toContainText(testProduct.name, { ignoreCase: true })
+            }
+        })
     })
+    
 
-    test("Informative message shown when there are no valid products", async ({ page }) => {
+    test("Informative message shown when there are no valid products", async ({ page, i18n }) => {
+        // Arrange
+        const homePage = new HomePage(page)
+        const productListFromApi = await navigateToHomePageAndWaitForProductsApi(homePage)
 
+        // Act
+        // Let's pick a search term that we're pretty confident isn't a product name!
+        const searchTerm = 'duys98ifujdsigfj s0d89gujd0nu09didfpdsgjds0fojdsn0vdsn'
+        await test.step(`Search for ${searchTerm}`, async () => {
+            await homePage.searchInput.fill(searchTerm)
+            await Promise.all([
+                homePage.page.waitForResponse(resp =>
+                    resp.url().includes(`${process.env.API_BASE_URL}/products/search`) &&
+                    resp.status() === 200
+                ),
+                homePage.searchSubmit.click()
+            ])
+        })
+
+        // Assert
+        const productsDisplayed = await test.step('Retrieve displayed products', async () => {
+            return await homePage.getAllVisibleProducts()
+        })
+
+        await test.step(`Verify that no products are displayed along with some explainer text`, async () => {
+            expect(productsDisplayed).toEqual([])
+            await expect(homePage.noResults).toHaveText(i18n.t('pages:overview:no-results'))
+        })
     })
 })
 

@@ -6,6 +6,9 @@ import { PaginationControls } from "../components/homepage/paginationControls";
 export class HomePage extends ToolShopPage {
 
   readonly paginationControls: PaginationControls
+  readonly searchInput = this.page.locator('#search-query')
+  readonly searchSubmit = this.page.locator('[data-test="search-submit"]')
+  readonly noResults = this.page.locator('[data-test="no-results"]')
 
   constructor(page: Page) {
     super(page, `${process.env.BASE_URL}`)
@@ -14,7 +17,7 @@ export class HomePage extends ToolShopPage {
 
   async getAllVisibleProducts(): Promise<ProductCard[]> {
     const elements = await this.page
-      .locator('[data-test^="product-"]')
+      .locator('a[data-test^="product-"]')
       .all();
 
     const products = await Promise.all(
@@ -31,5 +34,4 @@ export class HomePage extends ToolShopPage {
 
     return products;
   }
-
 }
