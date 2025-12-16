@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "lib": ["ES2021.String"],
+    "module": "es2022",
+    "moduleResolution": "bundler",
+    "types": ["node"],
+  },
+  "include": ["**/*.ts", "*.ts"]
+}

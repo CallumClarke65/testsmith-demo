@@ -2,6 +2,12 @@
 
 ## Design choices and notable packages
 
+## Issues / Limitations
+
+- Import of i18n files
+- HTTP/HTTPS login for blue/green deployment
+- Lack of teardown
+
 ## Page Object Model
 
 ## Defining enviroment-specific information

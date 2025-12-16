@@ -1,0 +1,22 @@
+{
+  "name": "testsmith-demo",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.57.0",
+    "dotenv": "^17.2.3",
+    "luxon": "^3.7.2",
+    "playwright-i18next-fixture": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.2",
+    "tsx": "^4.21.0"
+  }
+}
