@@ -1,5 +1,6 @@
 import { Locator } from "@playwright/test";
 import { ComponentBase } from "../../playwright/componentBase";
+import { ProductDetailPage } from "../../pages/productDetailPage";
 
 export class ProductCard extends ComponentBase {
 
@@ -18,5 +19,11 @@ export class ProductCard extends ComponentBase {
             return (await l.getAttribute('class')).includes('active')
         })
         return active.textContent()
+    }
+
+    async viewDetail(): Promise<ProductDetailPage> {
+        await this.host.click()
+        await this.host.page().waitForLoadState("networkidle")
+        return new ProductDetailPage(this.host.page(), this.id)
     }
 }

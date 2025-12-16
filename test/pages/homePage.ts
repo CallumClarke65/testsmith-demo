@@ -1,12 +1,15 @@
-
 import { Page } from "@playwright/test";
 import { ToolShopPage } from "./pageBase";
 import { ProductCard } from "../components/homepage/productCard";
+import { PaginationControls } from "../components/homepage/paginationControls";
 
 export class HomePage extends ToolShopPage {
 
+  readonly paginationControls: PaginationControls
+
   constructor(page: Page) {
     super(page, `${process.env.BASE_URL}`)
+    this.paginationControls = new PaginationControls(this.page.locator('app-pagination'))
   }
 
   async getAllVisibleProducts(): Promise<ProductCard[]> {
