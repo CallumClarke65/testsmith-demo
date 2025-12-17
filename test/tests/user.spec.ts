@@ -3,6 +3,7 @@ import { LoginSteps } from "../steps/loginSteps";
 import { test } from "../test";
 import { LoginPage } from "../pages/loginPage";
 import { TestUsers } from "../testUsers";
+import { InvoicesPage } from "../pages/invoicesPage";
 
 test.use({
     i18n: async ({ i18n }, use) => {
@@ -61,16 +62,67 @@ test.describe(`View Order History`, () => {
       storageState: `.auth/${user.userId}.json`,
     });
 
-    // For both of these tests, the setup should be done via the API. But I don't really want to faff with a second authentication mechanism for now, so I'll just use the UI
+    // For both of these tests, the setup should be done via the API that lets us put data in that we know will be there
+    // (And furthermore, we want a test that's going to confirm to us that new orders can make it into history!)
+    // However, on the prod demo, it seems that when I submit an order, it doesn't make it onto the order history page
+    // So instead we'll just rely on the static data that I see there
 
     test("Can view previous orders", async ({ page }) => {
+        const invoicesPage = new InvoicesPage(page)
 
-        // Arrange
+        // Arrange / Act
+        await test.step('Navigate to Order History', async () => {
+            await invoicesPage.goto()
+        })
 
+        // Assert
+        const invoiceRows = await test.step('Verify that previous orders are shown', async () => {
+            const invoiceRows = await invoicesPage.invoiceRows()
+            expect(invoiceRows.length).toBeGreaterThan(0)
+            return invoiceRows
+        })
+
+        // It's Christmas, so we'll also do an extra generous extra assertion
+        await test.step('Verify that known previous order is displayed on page 1', async () => {
+            for (const r of invoiceRows) {
+                if (await r.number.textContent() === 'INV-20250000039') {
+                    await expect(r.total).toContainText('227.67')
+                }
+            }
+        })
     })
 
     test("Can view the details of a previous order", async ({ page }) => {
+        const invoicesPage = new InvoicesPage(page)
 
+        // Arrange 
+        await test.step('Navigate to Order History', async () => {
+            await invoicesPage.goto()
+        })
+
+        // Act
+        const [invoiceRow, invoiceDetailsPage] = await test.step('View the details of a previous order', async () => {
+            const invoiceRows = await invoicesPage.invoiceRows()
+            const row = invoiceRows[0]
+            const number = await row.number.textContent()
+            const address = await row.address.textContent()
+            const date = await row.date.textContent()
+            const total = await row.total.textContent()
+            return [{
+                number: number,
+                address: address,
+                date: date,
+                total: total
+            },
+            await invoiceRows[0].viewDetails()]
+        })
+
+        // Assert
+        await test.step('Verify that data shown on the overview page matches the data on the detail page', async () => {
+            expect(await invoiceDetailsPage.number.inputValue()).toBe(invoiceRow.number)
+            expect(await invoiceDetailsPage.street.inputValue()).toBe(invoiceRow.address)
+            expect(await invoiceDetailsPage.date.inputValue()).toContain(invoiceRow.date)
+            expect((await invoiceDetailsPage.total.inputValue()).replace(' ','')).toContain(invoiceRow.total)
+        })
     })
-
 })
