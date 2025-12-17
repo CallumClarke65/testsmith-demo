@@ -10,6 +10,7 @@ export class Cart extends ComponentBase {
 
     readonly cartTotal = this.host.locator('[data-test="cart-total"]')
     readonly noItemsMessage = this.host.getByText(t('pages:checkout:cart:empty'))
+    readonly next = this.host.locator('[data-test="proceed-1"]')
 
     async cartItems(): Promise<CartItem[]> {
     // This is probably the worst case of missing selectors. Each tr should have a unique identifier based on the product id- it wouldn't be hard to add that!

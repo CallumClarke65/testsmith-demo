@@ -132,11 +132,113 @@ test.describe(`Update or remove from cart`, () => {
 test.describe(`Complete Checkout`, () => {
 
     test("Can successfully complete checkout", async ({ page }) => {
+        const productSteps = new ProductSteps(page)
+        const checkoutPage = new CheckoutPage(page)
 
+        // Arrange
+        await productSteps.addProductToCartByName('Combination Pliers')
+        await test.step('Go to checkout', async () => {
+            await checkoutPage.goto()
+        })
+
+        // Act
+        await test.step(`Complete checkout`, async () => {
+            await checkoutPage.cart.next.click()
+            await checkoutPage.signIn.next.click()
+
+            await test.step('Fill address details', async () => {
+                await checkoutPage.billingAddress.street.fill('1')
+                await checkoutPage.billingAddress.city.fill('1')
+                await checkoutPage.billingAddress.state.fill('1')
+                await checkoutPage.billingAddress.country.fill('1')
+                await checkoutPage.billingAddress.postalCode.fill('1')
+            })
+            await checkoutPage.billingAddress.next.click()
+
+            await test.step('Fill card details', async () => {
+                await checkoutPage.payment.method.selectOption({ value: 'credit-card' })
+                await checkoutPage.payment.ccNumber.fill('1111-1111-1111-1111')
+                await checkoutPage.payment.ccExpiry.fill('01/2050') // Will break in 25 years time!
+                await checkoutPage.payment.ccCCV.fill('111')
+                await checkoutPage.payment.ccName.fill(user.displayName)
+            })
+            await checkoutPage.payment.confirm.click()
+        })
+
+        // Assert
+        await test.step(`Verify payment succeeded`, async () => {
+            await expect(checkoutPage.payment.success).toBeVisible()
+        })
     })
 
-    test("User blocked from completing checkout without valid shipping or payment details", async ({ page }) => {
+    test("User blocked from completing checkout without valid shipping details", async ({ page }) => {
+        const productSteps = new ProductSteps(page)
+        const checkoutPage = new CheckoutPage(page)
 
+        // Arrange
+        await productSteps.addProductToCartByName('Combination Pliers')
+        await test.step('Go to checkout', async () => {
+            await checkoutPage.goto()
+        })
+
+        // Act
+        await test.step(`Complete checkout up to billing address`, async () => {
+            await checkoutPage.cart.next.click()
+            await checkoutPage.signIn.next.click()
+
+            await test.step('Partially fill address details', async () => {
+                await checkoutPage.billingAddress.street.fill('1')
+                await checkoutPage.billingAddress.city.fill('1')
+                await checkoutPage.billingAddress.state.fill('1')
+                await checkoutPage.billingAddress.country.fill('1')
+                await checkoutPage.billingAddress.postalCode.clear()
+            })
+        })
+
+        // Assert
+        await test.step(`Verify next step is blocked`, async () => {
+            await expect(checkoutPage.billingAddress.next).toBeDisabled()
+        })
     })
 
+    test("User blocked from completing checkout without valid payment details", async ({ page }) => {
+const productSteps = new ProductSteps(page)
+        const checkoutPage = new CheckoutPage(page)
+
+        // Arrange
+        await productSteps.addProductToCartByName('Combination Pliers')
+        await test.step('Go to checkout', async () => {
+            await checkoutPage.goto()
+        })
+
+        // Act
+        await test.step(`Complete checkout`, async () => {
+            await checkoutPage.cart.next.click()
+            await checkoutPage.signIn.next.click()
+
+            await test.step('Fill address details', async () => {
+                await checkoutPage.billingAddress.street.fill('1')
+                await checkoutPage.billingAddress.city.fill('1')
+                await checkoutPage.billingAddress.state.fill('1')
+                await checkoutPage.billingAddress.country.fill('1')
+                await checkoutPage.billingAddress.postalCode.fill('1')
+            })
+            await checkoutPage.billingAddress.next.click()
+
+            await test.step('Partially fill card details', async () => {
+                await checkoutPage.payment.method.selectOption({ value: 'credit-card' })
+                await checkoutPage.payment.ccNumber.fill('1111-1111-1111-1111')
+                await checkoutPage.payment.ccExpiry.fill('01/2050') // Will break in 25 years time!
+                await checkoutPage.payment.ccCCV.fill('111')
+                await checkoutPage.payment.ccName.clear()
+            })
+            await checkoutPage.payment.confirm.click()
+        })
+
+        // Assert
+        await test.step(`Verify payment failed`, async () => {
+            await expect(checkoutPage.payment.success).toBeVisible({ visible: false })
+            await expect(checkoutPage.payment.error).toBeVisible()
+        })
+    })
 })

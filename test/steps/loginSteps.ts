@@ -30,15 +30,19 @@ export class LoginSteps {
     @step
     async preAuthUser(user: TestUser) {
         try {
-            console.info(`Pre-authenticating user ${user.email}`)  
+            console.info(`Pre-authenticating user ${user.email}`)
             await this.loginPage.goto()
             await this.userPasswordLogin(user)
             const authFile = `.auth/${user.userId}.json`;
+            await this.page.waitForFunction(() =>
+                // Because the website uses local storage for persisting auth instead of cookies, AND it's set asynchronously, we need to wait for this
+                !!localStorage.getItem('auth-token')
+            )
             await this.page.context().storageState({ path: authFile });
-          } catch (e) {
+        } catch (e) {
             await this.page?.screenshot({ path: `test-results/auth-failure-${user.email}.png` })
             console.warn(`Error during authentication for user ${user.email}`)
             throw (e)
-          }
+        }
     }
 }
