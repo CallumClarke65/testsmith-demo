@@ -20,7 +20,7 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
-  workers: 4,
+  workers: 1, // Ideally we want more, but the hosted website can't handle it
   reporter: [
     ['junit', { outputFile: 'test-results/playwright-results.xml' }],
     ['html', { open: 'never' }],

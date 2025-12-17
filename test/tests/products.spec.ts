@@ -125,23 +125,21 @@ test.describe(`View Product List`, () => {
 })
 
 test.describe(`View Product Details`, () => {
-    // For speed, and since we have another test covering navigation from the homepage, we'll allow direct navigation
-    const testProductId = "01KCNRKQXNXS9DYV2FKG3S99C7"
+    // For speed, and since we have another test covering navigation from the homepage, we'll should use direct navigation
+    // However, the product ids supplied by the hosted website are regularly changing
+    // 
 
     test("Product details page displays name, description, price, and image", async ({ page }) => {
-        const productDetailPage = new ProductDetailPage(page, testProductId)
-
         // Arrange / Act
-        const testProduct = await test.step('Navigate directly to product details page', async () => {
-            const [response] = await Promise.all([
-                productDetailPage.page.waitForResponse(resp =>
-                    resp.url().includes(`${process.env.API_BASE_URL}/products/${testProductId}`) &&
-                    resp.status() === 200
-                ),
-                productDetailPage.goto()
-            ])
-            return (await response.json()) as Product;
+        const homePage = new HomePage(page)
+        const productListFromApi = await navigateToHomePageAndWaitForProductsApi(homePage)
+        const testProduct = productListFromApi[0]
 
+        const productDetailPage = await test.step('Click on a product link', async () => {
+            const productsDisplayed = await homePage.getAllVisibleProducts()
+            const testProductOnUi = productsDisplayed.find((p) => p.id === testProduct.id)
+
+            return await testProductOnUi.viewDetail()
         })
 
         // Assert
@@ -154,11 +152,17 @@ test.describe(`View Product Details`, () => {
     })
 
     test("Can add to cart as a visitor", async ({ page }) => {
-        const productDetailPage = new ProductDetailPage(page, testProductId)
 
         // Arrange
-        await test.step('Navigate directly to product details page', async () => {
-            await productDetailPage.goto()
+        const homePage = new HomePage(page)
+        const productListFromApi = await navigateToHomePageAndWaitForProductsApi(homePage)
+        const testProduct = productListFromApi[0]
+
+        const productDetailPage = await test.step('Click on a product link', async () => {
+            const productsDisplayed = await homePage.getAllVisibleProducts()
+            const testProductOnUi = productsDisplayed.find((p) => p.id === testProduct.id)
+
+            return await testProductOnUi.viewDetail()
         })
 
         const initialCardQuantity = await test.step('Get initial cart quantity', async () => {
@@ -189,7 +193,7 @@ test.describe(`Search for product`, () => {
     test("Can successfully search for a valid product", async ({ page }) => {
         // Arrange
         const homePage = new HomePage(page)
-        const productListFromApi = await navigateToHomePageAndWaitForProductsApi(homePage)
+        await navigateToHomePageAndWaitForProductsApi(homePage)
 
         // Act
         // To make the test a little more reliable, let's pick something that we think shouldn't be on the homepage by default
@@ -274,6 +278,7 @@ test.describe(`Filtering products`, () => {
             // However, we need to pick a category where we know that there is at least one product
         await test.step(`Apply filter by category \'${testCategory.name}\'`, async () => {
             await homePage.filters.categoryCheckbox(testCategory.id).check()
+            await homePage.page.waitForTimeout(1000) // HACK - wait for filters to apply
         })
 
         // Assert
@@ -314,6 +319,7 @@ test.describe(`Filtering products`, () => {
         const testCategory = categoriesList[0]
         await test.step(`Apply filter by category \'${testCategory.name}\'`, async () => {
             await homePage.filters.categoryCheckbox(testCategory.id).check()
+            await homePage.page.waitForTimeout(1000) // HACK - wait for filters to apply
         })
 
         // Act
@@ -321,6 +327,7 @@ test.describe(`Filtering products`, () => {
             await homePage.filters.categoryCheckbox(testCategory.id).uncheck()
             // This works because we know that only one filter is applied
             // Honestly, the filters component could have a "clear all" button which we could use instead
+            await homePage.page.waitForTimeout(1000) // HACK - wait for filters to apply
         })
 
         // Assert

@@ -20,10 +20,11 @@ export class HomePage extends ToolShopPage {
   async getAllVisibleProducts(): Promise<ProductCard[]> {
     const elements = await this.page
       .locator('a[data-test^="product-"]')
-      .all();
+      .all()
+    const visibleElements = elements.filter((l) => l.isVisible())
 
     const products = await Promise.all(
-      elements.map(async (el) => {
+      visibleElements.map(async (el) => {
         const dataTest = await el.getAttribute("data-test");
         if (!dataTest) {
           throw new Error("Product card missing data-test attribute");
