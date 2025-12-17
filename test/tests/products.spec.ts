@@ -126,14 +126,13 @@ test.describe(`View Product List`, () => {
 
 test.describe(`View Product Details`, () => {
     // For speed, and since we have another test covering navigation from the homepage, we'll allow direct navigation
-    const testProductId = "01KCM8HHVZ2F35JN0D9F3HSWTN"
+    const testProductId = "01KCNRKQXNXS9DYV2FKG3S99C7"
 
     test("Product details page displays name, description, price, and image", async ({ page }) => {
         const productDetailPage = new ProductDetailPage(page, testProductId)
 
         // Arrange / Act
         const testProduct = await test.step('Navigate directly to product details page', async () => {
-
             const [response] = await Promise.all([
                 productDetailPage.page.waitForResponse(resp =>
                     resp.url().includes(`${process.env.API_BASE_URL}/products/${testProductId}`) &&
@@ -193,16 +192,17 @@ test.describe(`Search for product`, () => {
         const productListFromApi = await navigateToHomePageAndWaitForProductsApi(homePage)
 
         // Act
-        // Let's pick an item from the API return and filter for that
-        const testProduct = productListFromApi[0]
-        await test.step(`Search for ${testProduct.name}`, async () => {
-            await homePage.searchInput.fill(testProduct.name)
+        // To make the test a little more reliable, let's pick something that we think shouldn't be on the homepage by default
+        // Ideally we'd have the test call the API to get page 2 and then use that, but for speed we'll just inject the search term 
+        const searchTerm = 'screwdriver'
+        await test.step(`Search for ${searchTerm}`, async () => {
+            await homePage.searchInput.fill(searchTerm)
             await Promise.all([
                 homePage.page.waitForResponse(resp =>
                     resp.url().includes(`${process.env.API_BASE_URL}/products/search`) &&
                     resp.status() === 200
                 ),
-                homePage.searchSubmit.click()
+                homePage.searchSubmit.click({ clickCount: 2,  })
             ])
         })
 
@@ -211,9 +211,9 @@ test.describe(`Search for product`, () => {
             return await homePage.getAllVisibleProducts()
         })
 
-        await test.step(`Verify that each displayed product contains ${testProduct.name} in its name`, async () => {
+        await test.step(`Verify that each displayed product contains \'${searchTerm}\' in its name`, async () => {
             for (const product of productsDisplayed) {
-                await expect(product.name).toContainText(testProduct.name, { ignoreCase: true })
+                await expect(product.name).toContainText(searchTerm, { ignoreCase: true })
             }
         })
     })
@@ -226,7 +226,7 @@ test.describe(`Search for product`, () => {
 
         // Act
         // Let's pick a search term that we're pretty confident isn't a product name!
-        const searchTerm = 'duys98ifujdsigfj s0d89gujd0nu09didfpdsgjds0fojdsn0vdsn'
+        const searchTerm = 'hjfdsi ods'
         await test.step(`Search for ${searchTerm}`, async () => {
             await homePage.searchInput.fill(searchTerm)
             await Promise.all([
@@ -234,7 +234,7 @@ test.describe(`Search for product`, () => {
                     resp.url().includes(`${process.env.API_BASE_URL}/products/search`) &&
                     resp.status() === 200
                 ),
-                homePage.searchSubmit.click()
+                homePage.searchSubmit.click({ clickCount: 2 })
             ])
         })
 

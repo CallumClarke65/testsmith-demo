@@ -15,10 +15,17 @@ export class ProductCard extends ComponentBase {
 
     async getCO2Rating(): Promise<string> {
         const letters = await this.co2RatingBadge.locator('span').all()
-        const active = letters.find( async (l) => {
-            return (await l.getAttribute('class')).includes('active')
-        })
-        return active.textContent()
+        const results = await Promise.all(
+            letters.map(async l => ({
+                element: l,
+                active: (await l.getAttribute('class'))?.includes('active')
+            }))
+        )
+
+        const active = results.find(r => r.active)?.element
+        if (!active) throw new Error('No active CO2 rating found')
+
+        return await active.textContent()
     }
 
     async viewDetail(): Promise<ProductDetailPage> {
