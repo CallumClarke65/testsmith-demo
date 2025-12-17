@@ -15,7 +15,7 @@ if(process.env.ENVIRONMENT !== undefined) {
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  globalSetup: './globalSetup',
+  globalSetup: process.env.ENVIRONMENT === 'prod' ? './globalSetup' : undefined,
   testDir: './tests',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,

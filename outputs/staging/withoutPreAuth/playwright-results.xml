@@ -1,0 +1,1242 @@
+<testsuites id="" name="" tests="20" failures="20" skipped="0" errors="0" time="423.521808">
+<testsuite name="products.spec.ts" timestamp="2025-12-17T14:22:33.623Z" hostname="chromium" tests="10" failures="10" skipped="0" time="398.751" errors="0">
+<testcase name="View Product List › Homepage displays a list of products with names, images, and prices" classname="products.spec.ts" time="4.974">
+<failure message="products.spec.ts:23:5 Homepage displays a list of products with names, images, and prices" type="FAILURE">
+<![CDATA[  [chromium] › products.spec.ts:23:5 › View Product List › Homepage displays a list of products with names, images, and prices › Verify products are correctly displayed › Verify product 1 is correctly displayed 
+
+    Error: Product 1 not found in UI
+
+      36 |                     const productCard = productsDisplayed.find((pUi) => pApi.id === pUi.id)
+      37 |                     if (!productCard) {
+    > 38 |                         throw new Error(`Product ${pApi.id} not found in UI`)
+         |                               ^
+      39 |                     }
+      40 |
+      41 |                     await productCard.host.scrollIntoViewIfNeeded()
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:38:31
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:35:28
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:33:20
+
+    Error Context: ..\test-results\products-View-Product-List-6e0d0-ith-names-images-and-prices-chromium\error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: Product 1 not found in UI
+
+      36 |                     const productCard = productsDisplayed.find((pUi) => pApi.id === pUi.id)
+      37 |                     if (!productCard) {
+    > 38 |                         throw new Error(`Product ${pApi.id} not found in UI`)
+         |                               ^
+      39 |                     }
+      40 |
+      41 |                     await productCard.host.scrollIntoViewIfNeeded()
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:38:31
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:35:28
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:33:20
+
+    Error Context: ..\test-results\products-View-Product-List-6e0d0-ith-names-images-and-prices-chromium-retry1\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\products-View-Product-List-6e0d0-ith-names-images-and-prices-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\products-View-Product-List-6e0d0-ith-names-images-and-prices-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|products-View-Product-List-6e0d0-ith-names-images-and-prices-chromium\error-context.md]]
+Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|products-View-Product-List-6e0d0-ith-names-images-and-prices-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|products-View-Product-List-6e0d0-ith-names-images-and-prices-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="View Product List › Can follow product links from homepage to a detailed product page" classname="products.spec.ts" time="4.927">
+<failure message="products.spec.ts:53:5 Can follow product links from homepage to a detailed product page" type="FAILURE">
+<![CDATA[  [chromium] › products.spec.ts:53:5 › View Product List › Can follow product links from homepage to a detailed product page › Click on a product link 
+
+    TypeError: Cannot read properties of undefined (reading 'viewDetail')
+
+      64 |             const testProductOnUi = productsDisplayed.find((p) => p.id === testProduct.id)
+      65 |
+    > 66 |             return await testProductOnUi.viewDetail()
+         |                                          ^
+      67 |         })
+      68 |
+      69 |         // Assert
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:66:42
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:62:35
+
+    Error Context: ..\test-results\products-View-Product-List-2c8dc--to-a-detailed-product-page-chromium\error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TypeError: Cannot read properties of undefined (reading 'viewDetail')
+
+      64 |             const testProductOnUi = productsDisplayed.find((p) => p.id === testProduct.id)
+      65 |
+    > 66 |             return await testProductOnUi.viewDetail()
+         |                                          ^
+      67 |         })
+      68 |
+      69 |         // Assert
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:66:42
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:62:35
+
+    Error Context: ..\test-results\products-View-Product-List-2c8dc--to-a-detailed-product-page-chromium-retry1\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\products-View-Product-List-2c8dc--to-a-detailed-product-page-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\products-View-Product-List-2c8dc--to-a-detailed-product-page-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|products-View-Product-List-2c8dc--to-a-detailed-product-page-chromium\error-context.md]]
+Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|products-View-Product-List-2c8dc--to-a-detailed-product-page-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|products-View-Product-List-2c8dc--to-a-detailed-product-page-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="View Product List › User can interact with pagination controls to view the next page of products" classname="products.spec.ts" time="63.14">
+<failure message="products.spec.ts:73:5 User can interact with pagination controls to view the next page of products" type="FAILURE">
+<![CDATA[  [chromium] › products.spec.ts:73:5 › View Product List › User can interact with pagination controls to view the next page of products › Navigate to page 2 
+
+    TimeoutError: page.waitForResponse: Timeout 30000ms exceeded while waiting for event "response"
+
+      80 |         const page2productList = await test.step('Navigate to page 2', async () => {
+      81 |             const [response] = await Promise.all([
+    > 82 |                 homePage.page.waitForResponse(resp =>
+         |                               ^
+      83 |                     resp.url().includes(`${process.env.API_BASE_URL}/products`) &&
+      84 |                     resp.status() === 200
+      85 |                 ),
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:82:31
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:80:45
+
+    Error Context: ..\test-results\products-View-Product-List-bfe04-w-the-next-page-of-products-chromium\error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: page.waitForResponse: Timeout 30000ms exceeded while waiting for event "response"
+
+      80 |         const page2productList = await test.step('Navigate to page 2', async () => {
+      81 |             const [response] = await Promise.all([
+    > 82 |                 homePage.page.waitForResponse(resp =>
+         |                               ^
+      83 |                     resp.url().includes(`${process.env.API_BASE_URL}/products`) &&
+      84 |                     resp.status() === 200
+      85 |                 ),
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:82:31
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:80:45
+
+    Error Context: ..\test-results\products-View-Product-List-bfe04-w-the-next-page-of-products-chromium-retry1\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\products-View-Product-List-bfe04-w-the-next-page-of-products-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\products-View-Product-List-bfe04-w-the-next-page-of-products-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|products-View-Product-List-bfe04-w-the-next-page-of-products-chromium\error-context.md]]
+Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|products-View-Product-List-bfe04-w-the-next-page-of-products-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|products-View-Product-List-bfe04-w-the-next-page-of-products-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="View Product List › User can use pagination to request any given page" classname="products.spec.ts" time="63.281">
+<failure message="products.spec.ts:99:5 User can use pagination to request any given page" type="FAILURE">
+<![CDATA[  [chromium] › products.spec.ts:99:5 › View Product List › User can use pagination to request any given page › Navigate to page 3 
+
+    TimeoutError: page.waitForResponse: Timeout 30000ms exceeded while waiting for event "response"
+
+      107 |         const page3productList = await test.step('Navigate to page 3', async () => {
+      108 |             const [response] = await Promise.all([
+    > 109 |                 homePage.page.waitForResponse(resp =>
+          |                               ^
+      110 |                     resp.url().includes(`${process.env.API_BASE_URL}/products`) &&
+      111 |                     resp.status() === 200
+      112 |                 ),
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:109:31
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:107:45
+
+    Error Context: ..\test-results\products-View-Product-List-17deb-n-to-request-any-given-page-chromium\error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: page.waitForResponse: Timeout 30000ms exceeded while waiting for event "response"
+
+      107 |         const page3productList = await test.step('Navigate to page 3', async () => {
+      108 |             const [response] = await Promise.all([
+    > 109 |                 homePage.page.waitForResponse(resp =>
+          |                               ^
+      110 |                     resp.url().includes(`${process.env.API_BASE_URL}/products`) &&
+      111 |                     resp.status() === 200
+      112 |                 ),
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:109:31
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:107:45
+
+    Error Context: ..\test-results\products-View-Product-List-17deb-n-to-request-any-given-page-chromium-retry1\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\products-View-Product-List-17deb-n-to-request-any-given-page-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\products-View-Product-List-17deb-n-to-request-any-given-page-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|products-View-Product-List-17deb-n-to-request-any-given-page-chromium\error-context.md]]
+Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|products-View-Product-List-17deb-n-to-request-any-given-page-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|products-View-Product-List-17deb-n-to-request-any-given-page-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="View Product Details › Product details page displays name, description, price, and image" classname="products.spec.ts" time="3.132">
+<failure message="products.spec.ts:132:5 Product details page displays name, description, price, and image" type="FAILURE">
+<![CDATA[  [chromium] › products.spec.ts:132:5 › View Product Details › Product details page displays name, description, price, and image › Click on a product link 
+
+    TypeError: Cannot read properties of undefined (reading 'viewDetail')
+
+      140 |             const testProductOnUi = productsDisplayed.find((p) => p.id === testProduct.id)
+      141 |
+    > 142 |             return await testProductOnUi.viewDetail()
+          |                                          ^
+      143 |         })
+      144 |
+      145 |         // Assert
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:142:42
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:138:35
+
+    Error Context: ..\test-results\products-View-Product-Deta-038ad-description-price-and-image-chromium\error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TypeError: Cannot read properties of undefined (reading 'viewDetail')
+
+      140 |             const testProductOnUi = productsDisplayed.find((p) => p.id === testProduct.id)
+      141 |
+    > 142 |             return await testProductOnUi.viewDetail()
+          |                                          ^
+      143 |         })
+      144 |
+      145 |         // Assert
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:142:42
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:138:35
+
+    Error Context: ..\test-results\products-View-Product-Deta-038ad-description-price-and-image-chromium-retry1\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\products-View-Product-Deta-038ad-description-price-and-image-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\products-View-Product-Deta-038ad-description-price-and-image-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|products-View-Product-Deta-038ad-description-price-and-image-chromium\error-context.md]]
+Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|products-View-Product-Deta-038ad-description-price-and-image-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|products-View-Product-Deta-038ad-description-price-and-image-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="View Product Details › Can add to cart as a visitor" classname="products.spec.ts" time="3.212">
+<failure message="products.spec.ts:154:5 Can add to cart as a visitor" type="FAILURE">
+<![CDATA[  [chromium] › products.spec.ts:154:5 › View Product Details › Can add to cart as a visitor › Click on a product link 
+
+    TypeError: Cannot read properties of undefined (reading 'viewDetail')
+
+      163 |             const testProductOnUi = productsDisplayed.find((p) => p.id === testProduct.id)
+      164 |
+    > 165 |             return await testProductOnUi.viewDetail()
+          |                                          ^
+      166 |         })
+      167 |
+      168 |         const initialCardQuantity = await test.step('Get initial cart quantity', async () => {
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:165:42
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:161:35
+
+    Error Context: ..\test-results\products-View-Product-Details-Can-add-to-cart-as-a-visitor-chromium\error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TypeError: Cannot read properties of undefined (reading 'viewDetail')
+
+      163 |             const testProductOnUi = productsDisplayed.find((p) => p.id === testProduct.id)
+      164 |
+    > 165 |             return await testProductOnUi.viewDetail()
+          |                                          ^
+      166 |         })
+      167 |
+      168 |         const initialCardQuantity = await test.step('Get initial cart quantity', async () => {
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:165:42
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:161:35
+
+    Error Context: ..\test-results\products-View-Product-Details-Can-add-to-cart-as-a-visitor-chromium-retry1\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\products-View-Product-Details-Can-add-to-cart-as-a-visitor-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\products-View-Product-Details-Can-add-to-cart-as-a-visitor-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|products-View-Product-Details-Can-add-to-cart-as-a-visitor-chromium\error-context.md]]
+Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|products-View-Product-Details-Can-add-to-cart-as-a-visitor-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|products-View-Product-Details-Can-add-to-cart-as-a-visitor-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Search for product › Can successfully search for a valid product" classname="products.spec.ts" time="63.031">
+<failure message="products.spec.ts:193:5 Can successfully search for a valid product" type="FAILURE">
+<![CDATA[  [chromium] › products.spec.ts:193:5 › Search for product › Can successfully search for a valid product › Search for screwdriver 
+
+    TimeoutError: locator.fill: Timeout 30000ms exceeded.
+    Call log:
+      - waiting for locator('#filters').locator('#search-query')
+
+
+      201 |         const searchTerm = 'screwdriver'
+      202 |         await test.step(`Search for ${searchTerm}`, async () => {
+    > 203 |             await homePage.filters.searchInput.fill(searchTerm)
+          |                                                ^
+      204 |             await Promise.all([
+      205 |                 homePage.page.waitForResponse(resp =>
+      206 |                     resp.url().includes(`${process.env.API_BASE_URL}/products/search`) &&
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:203:48
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:202:20
+
+    Error Context: ..\test-results\products-Search-for-produc-5f6eb--search-for-a-valid-product-chromium\error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: locator.fill: Timeout 30000ms exceeded.
+    Call log:
+      - waiting for locator('#filters').locator('#search-query')
+
+
+      201 |         const searchTerm = 'screwdriver'
+      202 |         await test.step(`Search for ${searchTerm}`, async () => {
+    > 203 |             await homePage.filters.searchInput.fill(searchTerm)
+          |                                                ^
+      204 |             await Promise.all([
+      205 |                 homePage.page.waitForResponse(resp =>
+      206 |                     resp.url().includes(`${process.env.API_BASE_URL}/products/search`) &&
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:203:48
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:202:20
+
+    Error Context: ..\test-results\products-Search-for-produc-5f6eb--search-for-a-valid-product-chromium-retry1\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\products-Search-for-produc-5f6eb--search-for-a-valid-product-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\products-Search-for-produc-5f6eb--search-for-a-valid-product-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|products-Search-for-produc-5f6eb--search-for-a-valid-product-chromium\error-context.md]]
+Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|products-Search-for-produc-5f6eb--search-for-a-valid-product-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|products-Search-for-produc-5f6eb--search-for-a-valid-product-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Search for product › Informative message shown when there are no valid products" classname="products.spec.ts" time="65.719">
+<failure message="products.spec.ts:226:5 Informative message shown when there are no valid products" type="FAILURE">
+<![CDATA[  [chromium] › products.spec.ts:226:5 › Search for product › Informative message shown when there are no valid products › Search for hjfdsi ods 
+
+    TimeoutError: locator.fill: Timeout 30000ms exceeded.
+    Call log:
+      - waiting for locator('#filters').locator('#search-query')
+
+
+      233 |         const searchTerm = 'hjfdsi ods'
+      234 |         await test.step(`Search for ${searchTerm}`, async () => {
+    > 235 |             await homePage.filters.searchInput.fill(searchTerm)
+          |                                                ^
+      236 |             await Promise.all([
+      237 |                 homePage.page.waitForResponse(resp =>
+      238 |                     resp.url().includes(`${process.env.API_BASE_URL}/products/search`) &&
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:235:48
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:234:20
+
+    Error Context: ..\test-results\products-Search-for-produc-f761c-there-are-no-valid-products-chromium\error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: locator.fill: Timeout 30000ms exceeded.
+    Call log:
+      - waiting for locator('#filters').locator('#search-query')
+
+
+      233 |         const searchTerm = 'hjfdsi ods'
+      234 |         await test.step(`Search for ${searchTerm}`, async () => {
+    > 235 |             await homePage.filters.searchInput.fill(searchTerm)
+          |                                                ^
+      236 |             await Promise.all([
+      237 |                 homePage.page.waitForResponse(resp =>
+      238 |                     resp.url().includes(`${process.env.API_BASE_URL}/products/search`) &&
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:235:48
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:234:20
+
+    Error Context: ..\test-results\products-Search-for-produc-f761c-there-are-no-valid-products-chromium-retry1\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\products-Search-for-produc-f761c-there-are-no-valid-products-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\products-Search-for-produc-f761c-there-are-no-valid-products-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|products-Search-for-produc-f761c-there-are-no-valid-products-chromium\error-context.md]]
+Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|products-Search-for-produc-f761c-there-are-no-valid-products-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|products-Search-for-produc-f761c-there-are-no-valid-products-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Filtering products › Can successfully apply filters" classname="products.spec.ts" time="64.369">
+<failure message="products.spec.ts:258:5 Can successfully apply filters" type="FAILURE">
+<![CDATA[  [chromium] › products.spec.ts:258:5 › Filtering products › Can successfully apply filters › Apply filter by category 'Screwdriver' 
+
+    TimeoutError: locator.check: Timeout 30000ms exceeded.
+    Call log:
+      - waiting for locator('#filters').locator('[data-test="category-6"]')
+
+
+      278 |             // However, we need to pick a category where we know that there is at least one product
+      279 |         await test.step(`Apply filter by category \'${testCategory.name}\'`, async () => {
+    > 280 |             await homePage.filters.categoryCheckbox(testCategory.id).check()
+          |                                                                      ^
+      281 |             await homePage.page.waitForTimeout(1000) // HACK - wait for filters to apply
+      282 |         })
+      283 |
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:280:70
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:279:20
+
+    Error Context: ..\test-results\products-Filtering-products-Can-successfully-apply-filters-chromium\error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: locator.check: Timeout 30000ms exceeded.
+    Call log:
+      - waiting for locator('#filters').locator('[data-test="category-6"]')
+
+
+      278 |             // However, we need to pick a category where we know that there is at least one product
+      279 |         await test.step(`Apply filter by category \'${testCategory.name}\'`, async () => {
+    > 280 |             await homePage.filters.categoryCheckbox(testCategory.id).check()
+          |                                                                      ^
+      281 |             await homePage.page.waitForTimeout(1000) // HACK - wait for filters to apply
+      282 |         })
+      283 |
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:280:70
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:279:20
+
+    Error Context: ..\test-results\products-Filtering-products-Can-successfully-apply-filters-chromium-retry1\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\products-Filtering-products-Can-successfully-apply-filters-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\products-Filtering-products-Can-successfully-apply-filters-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|products-Filtering-products-Can-successfully-apply-filters-chromium\error-context.md]]
+Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|products-Filtering-products-Can-successfully-apply-filters-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|products-Filtering-products-Can-successfully-apply-filters-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Filtering products › Can clear filters to return to the full list of products" classname="products.spec.ts" time="62.966">
+<failure message="products.spec.ts:298:5 Can clear filters to return to the full list of products" type="FAILURE">
+<![CDATA[  [chromium] › products.spec.ts:298:5 › Filtering products › Can clear filters to return to the full list of products › Apply filter by category 'Hand Tools' 
+
+    TimeoutError: locator.check: Timeout 30000ms exceeded.
+    Call log:
+      - waiting for locator('#filters').locator('[data-test="category-1"]')
+
+
+      319 |         const testCategory = categoriesList[0]
+      320 |         await test.step(`Apply filter by category \'${testCategory.name}\'`, async () => {
+    > 321 |             await homePage.filters.categoryCheckbox(testCategory.id).check()
+          |                                                                      ^
+      322 |             await homePage.page.waitForTimeout(1000) // HACK - wait for filters to apply
+      323 |         })
+      324 |
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:321:70
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:320:20
+
+    Error Context: ..\test-results\products-Filtering-product-411ef-o-the-full-list-of-products-chromium\error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: locator.check: Timeout 30000ms exceeded.
+    Call log:
+      - waiting for locator('#filters').locator('[data-test="category-1"]')
+
+
+      319 |         const testCategory = categoriesList[0]
+      320 |         await test.step(`Apply filter by category \'${testCategory.name}\'`, async () => {
+    > 321 |             await homePage.filters.categoryCheckbox(testCategory.id).check()
+          |                                                                      ^
+      322 |             await homePage.page.waitForTimeout(1000) // HACK - wait for filters to apply
+      323 |         })
+      324 |
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:321:70
+        at C:\Repos\testsmith-demo\test\tests\products.spec.ts:320:20
+
+    Error Context: ..\test-results\products-Filtering-product-411ef-o-the-full-list-of-products-chromium-retry1\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\products-Filtering-product-411ef-o-the-full-list-of-products-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\products-Filtering-product-411ef-o-the-full-list-of-products-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|products-Filtering-product-411ef-o-the-full-list-of-products-chromium\error-context.md]]
+Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|products-Filtering-product-411ef-o-the-full-list-of-products-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|products-Filtering-product-411ef-o-the-full-list-of-products-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="purchase.spec.ts" timestamp="2025-12-17T14:22:33.623Z" hostname="chromium" tests="6" failures="6" skipped="0" time="379.012" errors="0">
+<testcase name="Add products to cart › Items added to the cart appear correctly in the cart summary" classname="purchase.spec.ts" time="63.057">
+<failure message="purchase.spec.ts:24:5 Items added to the cart appear correctly in the cart summary" type="FAILURE">
+<![CDATA[  [chromium] › purchase.spec.ts:24:5 › Add products to cart › Items added to the cart appear correctly in the cart summary › ProductSteps.addProductToCartByName (products) 
+
+    TimeoutError: locator.fill: Timeout 30000ms exceeded.
+    Call log:
+      - waiting for locator('#filters').locator('#search-query')
+
+
+       at ..\steps\productSteps.ts:20
+
+      18 |             await this.homePage.goto()
+      19 |         }
+    > 20 |         await this.homePage.filters.searchInput.fill(productName)
+         |                                                 ^
+      21 |         await this.homePage.filters.searchSubmit.click()
+      22 |         await this.page.waitForTimeout(1000) // HACK - Need to wait for search to complete AND ui to update
+      23 |         const products = await this.homePage.getAllVisibleProducts()
+        at ProductSteps.addProductToCartByName (C:\Repos\testsmith-demo\test\steps\productSteps.ts:20:49)
+        at ProductSteps.<anonymous> (C:\Repos\testsmith-demo\test\playwright\decorators.ts:9:16)
+        at C:\Repos\testsmith-demo\test\tests\purchase.spec.ts:29:25
+
+    Error Context: ..\test-results\purchase-Add-products-to-c-b1022-rrectly-in-the-cart-summary-chromium\error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: locator.fill: Timeout 30000ms exceeded.
+    Call log:
+      - waiting for locator('#filters').locator('#search-query')
+
+
+       at ..\steps\productSteps.ts:20
+
+      18 |             await this.homePage.goto()
+      19 |         }
+    > 20 |         await this.homePage.filters.searchInput.fill(productName)
+         |                                                 ^
+      21 |         await this.homePage.filters.searchSubmit.click()
+      22 |         await this.page.waitForTimeout(1000) // HACK - Need to wait for search to complete AND ui to update
+      23 |         const products = await this.homePage.getAllVisibleProducts()
+        at ProductSteps.addProductToCartByName (C:\Repos\testsmith-demo\test\steps\productSteps.ts:20:49)
+        at ProductSteps.<anonymous> (C:\Repos\testsmith-demo\test\playwright\decorators.ts:9:16)
+        at C:\Repos\testsmith-demo\test\tests\purchase.spec.ts:29:25
+
+    Error Context: ..\test-results\purchase-Add-products-to-c-b1022-rrectly-in-the-cart-summary-chromium-retry1\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\purchase-Add-products-to-c-b1022-rrectly-in-the-cart-summary-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\purchase-Add-products-to-c-b1022-rrectly-in-the-cart-summary-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|purchase-Add-products-to-c-b1022-rrectly-in-the-cart-summary-chromium\error-context.md]]
+Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|purchase-Add-products-to-c-b1022-rrectly-in-the-cart-summary-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|purchase-Add-products-to-c-b1022-rrectly-in-the-cart-summary-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Update or remove from cart › Can edit quantity of an item in the cart" classname="purchase.spec.ts" time="63.288">
+<failure message="purchase.spec.ts:59:5 Can edit quantity of an item in the cart" type="FAILURE">
+<![CDATA[  [chromium] › purchase.spec.ts:59:5 › Update or remove from cart › Can edit quantity of an item in the cart › ProductSteps.addProductToCartByName (products) 
+
+    TimeoutError: locator.fill: Timeout 30000ms exceeded.
+    Call log:
+      - waiting for locator('#filters').locator('#search-query')
+
+
+       at ..\steps\productSteps.ts:20
+
+      18 |             await this.homePage.goto()
+      19 |         }
+    > 20 |         await this.homePage.filters.searchInput.fill(productName)
+         |                                                 ^
+      21 |         await this.homePage.filters.searchSubmit.click()
+      22 |         await this.page.waitForTimeout(1000) // HACK - Need to wait for search to complete AND ui to update
+      23 |         const products = await this.homePage.getAllVisibleProducts()
+        at ProductSteps.addProductToCartByName (C:\Repos\testsmith-demo\test\steps\productSteps.ts:20:49)
+        at ProductSteps.<anonymous> (C:\Repos\testsmith-demo\test\playwright\decorators.ts:9:16)
+        at C:\Repos\testsmith-demo\test\tests\purchase.spec.ts:64:25
+
+    Error Context: ..\test-results\purchase-Update-or-remove--fcced-tity-of-an-item-in-the-cart-chromium\error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: locator.fill: Timeout 30000ms exceeded.
+    Call log:
+      - waiting for locator('#filters').locator('#search-query')
+
+
+       at ..\steps\productSteps.ts:20
+
+      18 |             await this.homePage.goto()
+      19 |         }
+    > 20 |         await this.homePage.filters.searchInput.fill(productName)
+         |                                                 ^
+      21 |         await this.homePage.filters.searchSubmit.click()
+      22 |         await this.page.waitForTimeout(1000) // HACK - Need to wait for search to complete AND ui to update
+      23 |         const products = await this.homePage.getAllVisibleProducts()
+        at ProductSteps.addProductToCartByName (C:\Repos\testsmith-demo\test\steps\productSteps.ts:20:49)
+        at ProductSteps.<anonymous> (C:\Repos\testsmith-demo\test\playwright\decorators.ts:9:16)
+        at C:\Repos\testsmith-demo\test\tests\purchase.spec.ts:64:25
+
+    Error Context: ..\test-results\purchase-Update-or-remove--fcced-tity-of-an-item-in-the-cart-chromium-retry1\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\purchase-Update-or-remove--fcced-tity-of-an-item-in-the-cart-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\purchase-Update-or-remove--fcced-tity-of-an-item-in-the-cart-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|purchase-Update-or-remove--fcced-tity-of-an-item-in-the-cart-chromium\error-context.md]]
+Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|purchase-Update-or-remove--fcced-tity-of-an-item-in-the-cart-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|purchase-Update-or-remove--fcced-tity-of-an-item-in-the-cart-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Update or remove from cart › Can remove an item in the cart" classname="purchase.spec.ts" time="63.141">
+<failure message="purchase.spec.ts:96:5 Can remove an item in the cart" type="FAILURE">
+<![CDATA[  [chromium] › purchase.spec.ts:96:5 › Update or remove from cart › Can remove an item in the cart › ProductSteps.addProductToCartByName (products) 
+
+    TimeoutError: locator.fill: Timeout 30000ms exceeded.
+    Call log:
+      - waiting for locator('#filters').locator('#search-query')
+
+
+       at ..\steps\productSteps.ts:20
+
+      18 |             await this.homePage.goto()
+      19 |         }
+    > 20 |         await this.homePage.filters.searchInput.fill(productName)
+         |                                                 ^
+      21 |         await this.homePage.filters.searchSubmit.click()
+      22 |         await this.page.waitForTimeout(1000) // HACK - Need to wait for search to complete AND ui to update
+      23 |         const products = await this.homePage.getAllVisibleProducts()
+        at ProductSteps.addProductToCartByName (C:\Repos\testsmith-demo\test\steps\productSteps.ts:20:49)
+        at ProductSteps.<anonymous> (C:\Repos\testsmith-demo\test\playwright\decorators.ts:9:16)
+        at C:\Repos\testsmith-demo\test\tests\purchase.spec.ts:101:25
+
+    Error Context: ..\test-results\purchase-Update-or-remove--57b3d--remove-an-item-in-the-cart-chromium\error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: locator.fill: Timeout 30000ms exceeded.
+    Call log:
+      - waiting for locator('#filters').locator('#search-query')
+
+
+       at ..\steps\productSteps.ts:20
+
+      18 |             await this.homePage.goto()
+      19 |         }
+    > 20 |         await this.homePage.filters.searchInput.fill(productName)
+         |                                                 ^
+      21 |         await this.homePage.filters.searchSubmit.click()
+      22 |         await this.page.waitForTimeout(1000) // HACK - Need to wait for search to complete AND ui to update
+      23 |         const products = await this.homePage.getAllVisibleProducts()
+        at ProductSteps.addProductToCartByName (C:\Repos\testsmith-demo\test\steps\productSteps.ts:20:49)
+        at ProductSteps.<anonymous> (C:\Repos\testsmith-demo\test\playwright\decorators.ts:9:16)
+        at C:\Repos\testsmith-demo\test\tests\purchase.spec.ts:101:25
+
+    Error Context: ..\test-results\purchase-Update-or-remove--57b3d--remove-an-item-in-the-cart-chromium-retry1\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\purchase-Update-or-remove--57b3d--remove-an-item-in-the-cart-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\purchase-Update-or-remove--57b3d--remove-an-item-in-the-cart-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|purchase-Update-or-remove--57b3d--remove-an-item-in-the-cart-chromium\error-context.md]]
+Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|purchase-Update-or-remove--57b3d--remove-an-item-in-the-cart-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|purchase-Update-or-remove--57b3d--remove-an-item-in-the-cart-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Complete Checkout › Can successfully complete checkout" classname="purchase.spec.ts" time="63.266">
+<failure message="purchase.spec.ts:134:5 Can successfully complete checkout" type="FAILURE">
+<![CDATA[  [chromium] › purchase.spec.ts:134:5 › Complete Checkout › Can successfully complete checkout › ProductSteps.addProductToCartByName (products) 
+
+    TimeoutError: locator.fill: Timeout 30000ms exceeded.
+    Call log:
+      - waiting for locator('#filters').locator('#search-query')
+
+
+       at ..\steps\productSteps.ts:20
+
+      18 |             await this.homePage.goto()
+      19 |         }
+    > 20 |         await this.homePage.filters.searchInput.fill(productName)
+         |                                                 ^
+      21 |         await this.homePage.filters.searchSubmit.click()
+      22 |         await this.page.waitForTimeout(1000) // HACK - Need to wait for search to complete AND ui to update
+      23 |         const products = await this.homePage.getAllVisibleProducts()
+        at ProductSteps.addProductToCartByName (C:\Repos\testsmith-demo\test\steps\productSteps.ts:20:49)
+        at ProductSteps.<anonymous> (C:\Repos\testsmith-demo\test\playwright\decorators.ts:9:16)
+        at C:\Repos\testsmith-demo\test\tests\purchase.spec.ts:139:9
+
+    Error Context: ..\test-results\purchase-Complete-Checkout-c4ac5-cessfully-complete-checkout-chromium\error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: locator.fill: Timeout 30000ms exceeded.
+    Call log:
+      - waiting for locator('#filters').locator('#search-query')
+
+
+       at ..\steps\productSteps.ts:20
+
+      18 |             await this.homePage.goto()
+      19 |         }
+    > 20 |         await this.homePage.filters.searchInput.fill(productName)
+         |                                                 ^
+      21 |         await this.homePage.filters.searchSubmit.click()
+      22 |         await this.page.waitForTimeout(1000) // HACK - Need to wait for search to complete AND ui to update
+      23 |         const products = await this.homePage.getAllVisibleProducts()
+        at ProductSteps.addProductToCartByName (C:\Repos\testsmith-demo\test\steps\productSteps.ts:20:49)
+        at ProductSteps.<anonymous> (C:\Repos\testsmith-demo\test\playwright\decorators.ts:9:16)
+        at C:\Repos\testsmith-demo\test\tests\purchase.spec.ts:139:9
+
+    Error Context: ..\test-results\purchase-Complete-Checkout-c4ac5-cessfully-complete-checkout-chromium-retry1\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\purchase-Complete-Checkout-c4ac5-cessfully-complete-checkout-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\purchase-Complete-Checkout-c4ac5-cessfully-complete-checkout-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|purchase-Complete-Checkout-c4ac5-cessfully-complete-checkout-chromium\error-context.md]]
+Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|purchase-Complete-Checkout-c4ac5-cessfully-complete-checkout-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|purchase-Complete-Checkout-c4ac5-cessfully-complete-checkout-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Complete Checkout › User blocked from completing checkout without valid shipping details" classname="purchase.spec.ts" time="63.124">
+<failure message="purchase.spec.ts:174:5 User blocked from completing checkout without valid shipping details" type="FAILURE">
+<![CDATA[  [chromium] › purchase.spec.ts:174:5 › Complete Checkout › User blocked from completing checkout without valid shipping details › ProductSteps.addProductToCartByName (products) 
+
+    TimeoutError: locator.fill: Timeout 30000ms exceeded.
+    Call log:
+      - waiting for locator('#filters').locator('#search-query')
+
+
+       at ..\steps\productSteps.ts:20
+
+      18 |             await this.homePage.goto()
+      19 |         }
+    > 20 |         await this.homePage.filters.searchInput.fill(productName)
+         |                                                 ^
+      21 |         await this.homePage.filters.searchSubmit.click()
+      22 |         await this.page.waitForTimeout(1000) // HACK - Need to wait for search to complete AND ui to update
+      23 |         const products = await this.homePage.getAllVisibleProducts()
+        at ProductSteps.addProductToCartByName (C:\Repos\testsmith-demo\test\steps\productSteps.ts:20:49)
+        at ProductSteps.<anonymous> (C:\Repos\testsmith-demo\test\playwright\decorators.ts:9:16)
+        at C:\Repos\testsmith-demo\test\tests\purchase.spec.ts:179:9
+
+    Error Context: ..\test-results\purchase-Complete-Checkout-0d458-hout-valid-shipping-details-chromium\error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: locator.fill: Timeout 30000ms exceeded.
+    Call log:
+      - waiting for locator('#filters').locator('#search-query')
+
+
+       at ..\steps\productSteps.ts:20
+
+      18 |             await this.homePage.goto()
+      19 |         }
+    > 20 |         await this.homePage.filters.searchInput.fill(productName)
+         |                                                 ^
+      21 |         await this.homePage.filters.searchSubmit.click()
+      22 |         await this.page.waitForTimeout(1000) // HACK - Need to wait for search to complete AND ui to update
+      23 |         const products = await this.homePage.getAllVisibleProducts()
+        at ProductSteps.addProductToCartByName (C:\Repos\testsmith-demo\test\steps\productSteps.ts:20:49)
+        at ProductSteps.<anonymous> (C:\Repos\testsmith-demo\test\playwright\decorators.ts:9:16)
+        at C:\Repos\testsmith-demo\test\tests\purchase.spec.ts:179:9
+
+    Error Context: ..\test-results\purchase-Complete-Checkout-0d458-hout-valid-shipping-details-chromium-retry1\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\purchase-Complete-Checkout-0d458-hout-valid-shipping-details-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\purchase-Complete-Checkout-0d458-hout-valid-shipping-details-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|purchase-Complete-Checkout-0d458-hout-valid-shipping-details-chromium\error-context.md]]
+Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|purchase-Complete-Checkout-0d458-hout-valid-shipping-details-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|purchase-Complete-Checkout-0d458-hout-valid-shipping-details-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Complete Checkout › User blocked from completing checkout without valid payment details" classname="purchase.spec.ts" time="63.136">
+<failure message="purchase.spec.ts:204:5 User blocked from completing checkout without valid payment details" type="FAILURE">
+<![CDATA[  [chromium] › purchase.spec.ts:204:5 › Complete Checkout › User blocked from completing checkout without valid payment details › ProductSteps.addProductToCartByName (products) 
+
+    TimeoutError: locator.fill: Timeout 30000ms exceeded.
+    Call log:
+      - waiting for locator('#filters').locator('#search-query')
+
+
+       at ..\steps\productSteps.ts:20
+
+      18 |             await this.homePage.goto()
+      19 |         }
+    > 20 |         await this.homePage.filters.searchInput.fill(productName)
+         |                                                 ^
+      21 |         await this.homePage.filters.searchSubmit.click()
+      22 |         await this.page.waitForTimeout(1000) // HACK - Need to wait for search to complete AND ui to update
+      23 |         const products = await this.homePage.getAllVisibleProducts()
+        at ProductSteps.addProductToCartByName (C:\Repos\testsmith-demo\test\steps\productSteps.ts:20:49)
+        at ProductSteps.<anonymous> (C:\Repos\testsmith-demo\test\playwright\decorators.ts:9:16)
+        at C:\Repos\testsmith-demo\test\tests\purchase.spec.ts:209:9
+
+    Error Context: ..\test-results\purchase-Complete-Checkout-c8f3d-thout-valid-payment-details-chromium\error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: locator.fill: Timeout 30000ms exceeded.
+    Call log:
+      - waiting for locator('#filters').locator('#search-query')
+
+
+       at ..\steps\productSteps.ts:20
+
+      18 |             await this.homePage.goto()
+      19 |         }
+    > 20 |         await this.homePage.filters.searchInput.fill(productName)
+         |                                                 ^
+      21 |         await this.homePage.filters.searchSubmit.click()
+      22 |         await this.page.waitForTimeout(1000) // HACK - Need to wait for search to complete AND ui to update
+      23 |         const products = await this.homePage.getAllVisibleProducts()
+        at ProductSteps.addProductToCartByName (C:\Repos\testsmith-demo\test\steps\productSteps.ts:20:49)
+        at ProductSteps.<anonymous> (C:\Repos\testsmith-demo\test\playwright\decorators.ts:9:16)
+        at C:\Repos\testsmith-demo\test\tests\purchase.spec.ts:209:9
+
+    Error Context: ..\test-results\purchase-Complete-Checkout-c8f3d-thout-valid-payment-details-chromium-retry1\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\purchase-Complete-Checkout-c8f3d-thout-valid-payment-details-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\purchase-Complete-Checkout-c8f3d-thout-valid-payment-details-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|purchase-Complete-Checkout-c8f3d-thout-valid-payment-details-chromium\error-context.md]]
+Page loaded: https://with-bugs.practicesoftwaretesting.com/#/
+
+[[ATTACHMENT|purchase-Complete-Checkout-c8f3d-thout-valid-payment-details-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|purchase-Complete-Checkout-c8f3d-thout-valid-payment-details-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="user.spec.ts" timestamp="2025-12-17T14:22:33.623Z" hostname="chromium" tests="4" failures="4" skipped="0" time="12.171" errors="0">
+<testcase name="Authentication › Can successfully login" classname="user.spec.ts" time="2.784">
+<failure message="user.spec.ts:16:5 Can successfully login" type="FAILURE">
+<![CDATA[  [chromium] › user.spec.ts:16:5 › Authentication › Can successfully login › LoginSteps.userPasswordLogin (auth) 
+
+    Error: locator.fill: Error: strict mode violation: locator('#password') resolved to 2 elements:
+        1) <app-password-input id="password" formcontrolname="password" placeholder="Your password *" class="ng-untouched ng-pristine ng-valid">…</app-password-input> aka locator('app-password-input')
+        2) <input id="password" type="password" class="form-control" data-test="password" aria-invalid="false" placeholder="Your password *"/> aka locator('[data-test="password"]')
+
+    Call log:
+      - waiting for locator('#password')
+
+
+       at ..\steps\loginSteps.ts:24
+
+      22 |
+      23 |         await this.loginPage.emailInput.fill(user.email)
+    > 24 |         await this.loginPage.passwordInput.fill(user.password)
+         |                                            ^
+      25 |         await this.loginPage.submit.click()
+      26 |         await this.page.waitForLoadState('networkidle')
+      27 |         return new AccountPage(this.page)
+        at LoginSteps.userPasswordLogin (C:\Repos\testsmith-demo\test\steps\loginSteps.ts:24:44)
+        at LoginSteps.<anonymous> (C:\Repos\testsmith-demo\test\playwright\decorators.ts:9:16)
+        at C:\Repos\testsmith-demo\test\tests\user.spec.ts:23:29
+
+    Error Context: ..\test-results\user-Authentication-Can-successfully-login-chromium\error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: locator.fill: Error: strict mode violation: locator('#password') resolved to 2 elements:
+        1) <app-password-input id="password" formcontrolname="password" placeholder="Your password *" class="ng-untouched ng-pristine ng-valid">…</app-password-input> aka locator('app-password-input')
+        2) <input id="password" type="password" class="form-control" data-test="password" aria-invalid="false" placeholder="Your password *"/> aka locator('[data-test="password"]')
+
+    Call log:
+      - waiting for locator('#password')
+
+
+       at ..\steps\loginSteps.ts:24
+
+      22 |
+      23 |         await this.loginPage.emailInput.fill(user.email)
+    > 24 |         await this.loginPage.passwordInput.fill(user.password)
+         |                                            ^
+      25 |         await this.loginPage.submit.click()
+      26 |         await this.page.waitForLoadState('networkidle')
+      27 |         return new AccountPage(this.page)
+        at LoginSteps.userPasswordLogin (C:\Repos\testsmith-demo\test\steps\loginSteps.ts:24:44)
+        at LoginSteps.<anonymous> (C:\Repos\testsmith-demo\test\playwright\decorators.ts:9:16)
+        at C:\Repos\testsmith-demo\test\tests\user.spec.ts:23:29
+
+    Error Context: ..\test-results\user-Authentication-Can-successfully-login-chromium-retry1\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\user-Authentication-Can-successfully-login-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\user-Authentication-Can-successfully-login-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[Page loaded: https://with-bugs.practicesoftwaretesting.com/#/auth/login
+
+[[ATTACHMENT|user-Authentication-Can-successfully-login-chromium\error-context.md]]
+Page loaded: https://with-bugs.practicesoftwaretesting.com/#/auth/login
+
+[[ATTACHMENT|user-Authentication-Can-successfully-login-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|user-Authentication-Can-successfully-login-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication › Invalid login attempts display appropriate errors" classname="user.spec.ts" time="2.908">
+<failure message="user.spec.ts:32:5 Invalid login attempts display appropriate errors" type="FAILURE">
+<![CDATA[  [chromium] › user.spec.ts:32:5 › Authentication › Invalid login attempts display appropriate errors › Attempt to login with a non-existent user 
+
+    Error: locator.fill: Error: strict mode violation: locator('#password') resolved to 2 elements:
+        1) <app-password-input id="password" formcontrolname="password" placeholder="Your password *" class="ng-untouched ng-pristine ng-valid">…</app-password-input> aka locator('app-password-input')
+        2) <input id="password" type="password" class="form-control" data-test="password" aria-invalid="false" placeholder="Your password *"/> aka locator('[data-test="password"]')
+
+    Call log:
+      - waiting for locator('#password')
+
+
+      41 |         await test.step('Attempt to login with a non-existent user', async () => {
+      42 |             await loginPage.emailInput.fill(`invaliduser@invaliddomain.com`)
+    > 43 |             await loginPage.passwordInput.fill('123')
+         |                                           ^
+      44 |             await loginPage.submit.click()
+      45 |         })
+      46 |
+        at C:\Repos\testsmith-demo\test\tests\user.spec.ts:43:43
+        at C:\Repos\testsmith-demo\test\tests\user.spec.ts:41:9
+
+    Error Context: ..\test-results\user-Authentication-Invali-1fc5d--display-appropriate-errors-chromium\error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: locator.fill: Error: strict mode violation: locator('#password') resolved to 2 elements:
+        1) <app-password-input id="password" formcontrolname="password" placeholder="Your password *" class="ng-untouched ng-pristine ng-valid">…</app-password-input> aka locator('app-password-input')
+        2) <input id="password" type="password" class="form-control" data-test="password" aria-invalid="false" placeholder="Your password *"/> aka locator('[data-test="password"]')
+
+    Call log:
+      - waiting for locator('#password')
+
+
+      41 |         await test.step('Attempt to login with a non-existent user', async () => {
+      42 |             await loginPage.emailInput.fill(`invaliduser@invaliddomain.com`)
+    > 43 |             await loginPage.passwordInput.fill('123')
+         |                                           ^
+      44 |             await loginPage.submit.click()
+      45 |         })
+      46 |
+        at C:\Repos\testsmith-demo\test\tests\user.spec.ts:43:43
+        at C:\Repos\testsmith-demo\test\tests\user.spec.ts:41:9
+
+    Error Context: ..\test-results\user-Authentication-Invali-1fc5d--display-appropriate-errors-chromium-retry1\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\user-Authentication-Invali-1fc5d--display-appropriate-errors-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\user-Authentication-Invali-1fc5d--display-appropriate-errors-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[Page loaded: https://with-bugs.practicesoftwaretesting.com/#/auth/login
+
+[[ATTACHMENT|user-Authentication-Invali-1fc5d--display-appropriate-errors-chromium\error-context.md]]
+Page loaded: https://with-bugs.practicesoftwaretesting.com/#/auth/login
+
+[[ATTACHMENT|user-Authentication-Invali-1fc5d--display-appropriate-errors-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|user-Authentication-Invali-1fc5d--display-appropriate-errors-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="View Order History › Can view previous orders" classname="user.spec.ts" time="3.251">
+<failure message="user.spec.ts:70:5 Can view previous orders" type="FAILURE">
+<![CDATA[  [chromium] › user.spec.ts:70:5 › View Order History › Can view previous orders › Verify that previous orders are shown 
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 0
+    Received:   0
+
+      79 |         const invoiceRows = await test.step('Verify that previous orders are shown', async () => {
+      80 |             const invoiceRows = await invoicesPage.invoiceRows()
+    > 81 |             expect(invoiceRows.length).toBeGreaterThan(0)
+         |                                        ^
+      82 |             return invoiceRows
+      83 |         })
+      84 |
+        at C:\Repos\testsmith-demo\test\tests\user.spec.ts:81:40
+        at C:\Repos\testsmith-demo\test\tests\user.spec.ts:79:29
+
+    Error Context: ..\test-results\user-View-Order-History-Can-view-previous-orders-chromium\error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 0
+    Received:   0
+
+      79 |         const invoiceRows = await test.step('Verify that previous orders are shown', async () => {
+      80 |             const invoiceRows = await invoicesPage.invoiceRows()
+    > 81 |             expect(invoiceRows.length).toBeGreaterThan(0)
+         |                                        ^
+      82 |             return invoiceRows
+      83 |         })
+      84 |
+        at C:\Repos\testsmith-demo\test\tests\user.spec.ts:81:40
+        at C:\Repos\testsmith-demo\test\tests\user.spec.ts:79:29
+
+    Error Context: ..\test-results\user-View-Order-History-Can-view-previous-orders-chromium-retry1\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\user-View-Order-History-Can-view-previous-orders-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\user-View-Order-History-Can-view-previous-orders-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[Page loaded: https://with-bugs.practicesoftwaretesting.com/#/account/invoices
+
+[[ATTACHMENT|user-View-Order-History-Can-view-previous-orders-chromium\error-context.md]]
+Page loaded: https://with-bugs.practicesoftwaretesting.com/#/account/invoices
+
+[[ATTACHMENT|user-View-Order-History-Can-view-previous-orders-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|user-View-Order-History-Can-view-previous-orders-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="View Order History › Can view the details of a previous order" classname="user.spec.ts" time="3.228">
+<failure message="user.spec.ts:95:5 Can view the details of a previous order" type="FAILURE">
+<![CDATA[  [chromium] › user.spec.ts:95:5 › View Order History › Can view the details of a previous order › View the details of a previous order 
+
+    TypeError: Cannot read properties of undefined (reading 'number')
+
+      105 |             const invoiceRows = await invoicesPage.invoiceRows()
+      106 |             const row = invoiceRows[0]
+    > 107 |             const number = await row.number.textContent()
+          |                                      ^
+      108 |             const address = await row.address.textContent()
+      109 |             const date = await row.date.textContent()
+      110 |             const total = await row.total.textContent()
+        at C:\Repos\testsmith-demo\test\tests\user.spec.ts:107:38
+        at C:\Repos\testsmith-demo\test\tests\user.spec.ts:104:50
+
+    Error Context: ..\test-results\user-View-Order-History-Ca-78df3-details-of-a-previous-order-chromium\error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TypeError: Cannot read properties of undefined (reading 'number')
+
+      105 |             const invoiceRows = await invoicesPage.invoiceRows()
+      106 |             const row = invoiceRows[0]
+    > 107 |             const number = await row.number.textContent()
+          |                                      ^
+      108 |             const address = await row.address.textContent()
+      109 |             const date = await row.date.textContent()
+      110 |             const total = await row.total.textContent()
+        at C:\Repos\testsmith-demo\test\tests\user.spec.ts:107:38
+        at C:\Repos\testsmith-demo\test\tests\user.spec.ts:104:50
+
+    Error Context: ..\test-results\user-View-Order-History-Ca-78df3-details-of-a-previous-order-chromium-retry1\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\test-results\user-View-Order-History-Ca-78df3-details-of-a-previous-order-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\test-results\user-View-Order-History-Ca-78df3-details-of-a-previous-order-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[Page loaded: https://with-bugs.practicesoftwaretesting.com/#/account/invoices
+
+[[ATTACHMENT|user-View-Order-History-Ca-78df3-details-of-a-previous-order-chromium\error-context.md]]
+Page loaded: https://with-bugs.practicesoftwaretesting.com/#/account/invoices
+
+[[ATTACHMENT|user-View-Order-History-Ca-78df3-details-of-a-previous-order-chromium-retry1\error-context.md]]
+
+[[ATTACHMENT|user-View-Order-History-Ca-78df3-details-of-a-previous-order-chromium-retry1\trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

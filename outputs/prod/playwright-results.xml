@@ -1,0 +1,136 @@
+<testsuites id="" name="" tests="20" failures="0" skipped="0" errors="0" time="33.25941400000001">
+<testsuite name="products.spec.ts" timestamp="2025-12-17T14:14:12.431Z" hostname="chromium" tests="10" failures="0" skipped="0" time="21.124" errors="0">
+<testcase name="View Product List › Homepage displays a list of products with names, images, and prices" classname="products.spec.ts" time="2.499">
+<system-out>
+<![CDATA[Page loaded: https://practicesoftwaretesting.com/
+]]>
+</system-out>
+</testcase>
+<testcase name="View Product List › Can follow product links from homepage to a detailed product page" classname="products.spec.ts" time="1.844">
+<system-out>
+<![CDATA[Page loaded: https://practicesoftwaretesting.com/
+]]>
+</system-out>
+</testcase>
+<testcase name="View Product List › User can interact with pagination controls to view the next page of products" classname="products.spec.ts" time="1.569">
+<system-out>
+<![CDATA[Page loaded: https://practicesoftwaretesting.com/
+]]>
+</system-out>
+</testcase>
+<testcase name="View Product List › User can use pagination to request any given page" classname="products.spec.ts" time="1.754">
+<system-out>
+<![CDATA[Page loaded: https://practicesoftwaretesting.com/
+]]>
+</system-out>
+</testcase>
+<testcase name="View Product Details › Product details page displays name, description, price, and image" classname="products.spec.ts" time="1.917">
+<system-out>
+<![CDATA[Page loaded: https://practicesoftwaretesting.com/
+]]>
+</system-out>
+</testcase>
+<testcase name="View Product Details › Can add to cart as a visitor" classname="products.spec.ts" time="2.517">
+<system-out>
+<![CDATA[Page loaded: https://practicesoftwaretesting.com/
+]]>
+</system-out>
+</testcase>
+<testcase name="Search for product › Can successfully search for a valid product" classname="products.spec.ts" time="1.724">
+<system-out>
+<![CDATA[Page loaded: https://practicesoftwaretesting.com/
+]]>
+</system-out>
+</testcase>
+<testcase name="Search for product › Informative message shown when there are no valid products" classname="products.spec.ts" time="1.557">
+<system-out>
+<![CDATA[Page loaded: https://practicesoftwaretesting.com/
+]]>
+</system-out>
+</testcase>
+<testcase name="Filtering products › Can successfully apply filters" classname="products.spec.ts" time="2.366">
+<system-out>
+<![CDATA[Page loaded: https://practicesoftwaretesting.com/
+]]>
+</system-out>
+</testcase>
+<testcase name="Filtering products › Can clear filters to return to the full list of products" classname="products.spec.ts" time="3.377">
+<system-out>
+<![CDATA[Page loaded: https://practicesoftwaretesting.com/
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="purchase.spec.ts" timestamp="2025-12-17T14:14:12.431Z" hostname="chromium" tests="6" failures="0" skipped="0" time="30.957" errors="0">
+<testcase name="Add products to cart › Items added to the cart appear correctly in the cart summary" classname="purchase.spec.ts" time="4.676">
+<system-out>
+<![CDATA[Page loaded: https://practicesoftwaretesting.com/
+Page loaded: https://practicesoftwaretesting.com/checkout
+]]>
+</system-out>
+</testcase>
+<testcase name="Update or remove from cart › Can edit quantity of an item in the cart" classname="purchase.spec.ts" time="5.549">
+<system-out>
+<![CDATA[Page loaded: https://practicesoftwaretesting.com/
+Page loaded: https://practicesoftwaretesting.com/checkout
+]]>
+</system-out>
+</testcase>
+<testcase name="Update or remove from cart › Can remove an item in the cart" classname="purchase.spec.ts" time="5.159">
+<system-out>
+<![CDATA[Page loaded: https://practicesoftwaretesting.com/
+Page loaded: https://practicesoftwaretesting.com/checkout
+]]>
+</system-out>
+</testcase>
+<testcase name="Complete Checkout › Can successfully complete checkout" classname="purchase.spec.ts" time="5.416">
+<system-out>
+<![CDATA[Page loaded: https://practicesoftwaretesting.com/
+Page loaded: https://practicesoftwaretesting.com/checkout
+]]>
+</system-out>
+</testcase>
+<testcase name="Complete Checkout › User blocked from completing checkout without valid shipping details" classname="purchase.spec.ts" time="4.809">
+<system-out>
+<![CDATA[Page loaded: https://practicesoftwaretesting.com/
+here
+Page loaded: https://practicesoftwaretesting.com/checkout
+]]>
+</system-out>
+</testcase>
+<testcase name="Complete Checkout › User blocked from completing checkout without valid payment details" classname="purchase.spec.ts" time="5.348">
+<system-out>
+<![CDATA[Page loaded: https://practicesoftwaretesting.com/
+Page loaded: https://practicesoftwaretesting.com/checkout
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="user.spec.ts" timestamp="2025-12-17T14:14:12.431Z" hostname="chromium" tests="4" failures="0" skipped="0" time="6.448" errors="0">
+<testcase name="Authentication › Can successfully login" classname="user.spec.ts" time="1.882">
+<system-out>
+<![CDATA[Page loaded: https://practicesoftwaretesting.com/auth/login
+Page loaded: https://practicesoftwaretesting.com/account
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication › Invalid login attempts display appropriate errors" classname="user.spec.ts" time="1.54">
+<system-out>
+<![CDATA[Page loaded: https://practicesoftwaretesting.com/auth/login
+]]>
+</system-out>
+</testcase>
+<testcase name="View Order History › Can view previous orders" classname="user.spec.ts" time="1.368">
+<system-out>
+<![CDATA[Page loaded: https://practicesoftwaretesting.com/account/invoices
+]]>
+</system-out>
+</testcase>
+<testcase name="View Order History › Can view the details of a previous order" classname="user.spec.ts" time="1.658">
+<system-out>
+<![CDATA[Page loaded: https://practicesoftwaretesting.com/account/invoices
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

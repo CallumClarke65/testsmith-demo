@@ -1,0 +1,20 @@
+ARG PLAYWRIGHT_VERSION=v1.57.0-noble
+
+FROM mcr.microsoft.com/playwright:$PLAYWRIGHT_VERSION AS playwright
+ARG PAKET_PAT=invalid
+ARG PLAYWRIGHT_VERSION
+ENV IMAGE_PLAYWRIGHT_VERSION=${PLAYWRIGHT_VERSION}
+WORKDIR /test
+RUN chmod 777 .
+COPY . .
+RUN INSTALLED_PLAYWRIGHT_VERSION=$(node -p "require('./package.json').dependencies['@playwright/test']") && \
+    IMAGE_PLAYWRIGHT_VERSION=$(echo $PLAYWRIGHT_VERSION | sed -E 's/[^0-9]*([0-9]+\.[0-9]+\.[0-9]+).*/\1/') && \
+    NPM_PLAYWRIGHT_VERSION=$(echo "$INSTALLED_PLAYWRIGHT_VERSION" | sed -E 's/[^0-9]*([0-9]+\.[0-9]+\.[0-9]+).*/\1/') && \
+    echo "Docker image Playwright version: $IMAGE_PLAYWRIGHT_VERSION" && \
+    echo "Package.json Playwright version: $NPM_PLAYWRIGHT_VERSION" && \
+    if [ "$IMAGE_PLAYWRIGHT_VERSION" != "$NPM_PLAYWRIGHT_VERSION" ]; then \
+      echo "ERROR: Version mismatch between base image ($IMAGE_PLAYWRIGHT_VERSION) and package.json ($NPM_PLAYWRIGHT_VERSION)" && exit 1; \
+    fi
+RUN npm install
+ENTRYPOINT [ "npm", "run", "test" ]
+CMD []

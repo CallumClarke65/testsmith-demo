@@ -4,9 +4,29 @@ This repo is a demo implementation of Playwright showcasing some key concepts fo
 
 # Running tests locally
 
+Install the test suite by running the following commands from the ./test directory:-
+
+1. `npm i`
+2. `npx playwright install`
+
+Tests are run with `npm run test <environment>`. The following environments are defined-
+
+| environment | Description |
+| --- | --- |
+| prod | The main working website |
+| staging | The buggy website |
+
 ## UI mode
 
+Playwright's UI mode can be used to debug tests with `npm run test:ui <environment>`. This will open the Playwright UI with a test session scoped to the target environment.
+
 ## Containerised
+
+Alternatively, the tests can be built as a docker container using `docker build -t playwright .` run from the ./test directory.
+
+When running from inside a container, UI mode is not supported.
+
+Once built, the test image can be run with `docker run --rm playwright <environment>`, where environment is eg. 'prod'.
 
 # Docs
 

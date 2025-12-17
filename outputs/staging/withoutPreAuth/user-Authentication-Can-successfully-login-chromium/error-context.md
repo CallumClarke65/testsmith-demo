@@ -1,0 +1,55 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e5]:
+      - generic [ref=e6]: 🐛 Bug Hunting Mode - Find & Report Bugs!
+      - button "Bug Hunting Guide" [ref=e7] [cursor=pointer]
+    - navigation [ref=e8]:
+      - generic [ref=e9]:
+        - link "Practice Software Testing - Toolshop" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - menubar "Main menu" [ref=e13]:
+          - menuitem "Home" [ref=e14]:
+            - link "Home" [ref=e15] [cursor=pointer]:
+              - /url: "#/contact"
+          - menuitem "Categories" [ref=e16]:
+            - button "Categories" [ref=e17] [cursor=pointer]
+          - menuitem "Contakt" [ref=e18]:
+            - link "Contakt" [ref=e19] [cursor=pointer]:
+              - /url: "#/contact"
+          - menuitem "Sign in" [ref=e20]:
+            - link "Sign in" [ref=e21] [cursor=pointer]:
+              - /url: "#/auth/login"
+  - generic [ref=e26]:
+    - heading "Login" [level=3] [ref=e27]
+    - generic [ref=e28]:
+      - textbox "Your E-mail *" [active] [ref=e30]: customer2@practicesoftwaretesting.com
+      - generic [ref=e33]:
+        - textbox "Your password *" [ref=e34]
+        - button "" [ref=e36] [cursor=pointer]:
+          - generic [ref=e37]: 
+      - button "Login" [ref=e39] [cursor=pointer]
+      - paragraph [ref=e41]:
+        - text: Not yet an account?
+        - link "Register your account" [ref=e42] [cursor=pointer]:
+          - /url: "#/auth/register"
+        - link "Forgot your Password?" [ref=e43] [cursor=pointer]:
+          - /url: "#/auth/forgot-password"
+  - paragraph [ref=e46]:
+    - text: This is a DEMO application (
+    - link "GitHub repo" [ref=e47] [cursor=pointer]:
+      - /url: https://github.com/testsmith-io/practice-software-testing
+    - text: ), used for software testing training purpose. |
+    - link "Support this project" [ref=e48] [cursor=pointer]:
+      - /url: https://testwithroy.com/b/support
+    - text: "| Banner photo by"
+    - link "Barn Images" [ref=e49] [cursor=pointer]:
+      - /url: https://unsplash.com/@barnimages
+    - text: "on"
+    - link "Unsplash" [ref=e50] [cursor=pointer]:
+      - /url: https://unsplash.com/photos/t5YUoHW6zRo
+    - text: .
+```
