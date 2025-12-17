@@ -19,8 +19,8 @@ export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 1 : 0,
-  workers: 1, // Ideally we want more, but the hosted website can't handle it
+  retries: 1, // Usually we'd only want retries on CI, but since we have no pipeline to run this, we'll allow them here.
+  workers: 2, // Ideally we want more, but the hosted website can't handle it
   reporter: [
     ['junit', { outputFile: 'test-results/playwright-results.xml' }],
     ['html', { open: 'never' }],

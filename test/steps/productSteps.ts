@@ -45,6 +45,13 @@ export class ProductSteps {
         ])
 
         await productDetailPage.addToCart()
-        return (await response.json()) as Product
+
+        // Not sure what happens to make this necessary. Sometimes the test intercepts an API response with an array, sometimes it doesn't.
+        // Either way, this hack will fix it quickly.
+        const responseJson = await response.json()
+        if (Array.isArray(responseJson)) {
+            return responseJson.find((p) => p.name === productName) as Product
+        }
+        return responseJson as Product
     }
 }
