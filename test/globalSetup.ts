@@ -1,7 +1,7 @@
 import { chromium } from "@playwright/test";
 import { TestUser } from "./playwright/testUser";
 import { TestUsers } from "./testUsers";
-import { LoginSteps } from "./auth/steps/loginSteps";
+import { LoginSteps } from "./steps/loginSteps";
 
 async function globalSetup() {
 
