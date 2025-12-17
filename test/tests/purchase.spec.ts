@@ -35,9 +35,9 @@ test.describe(`Add products to cart`, () => {
 
         // Assert
         await test.step(`Verify product ${product.id} appears correctly in cart summary`, async () => {
-            const cartItems = await checkoutPage.cartItems()
+            const cartItems = await checkoutPage.cart.cartItems()
             const cartItem = await (async () => {
-                for (const i of cartItems) { 
+                for (const i of cartItems) {
                     const title = await i.title.textContent()
                     if (title?.trim().toLowerCase() === product.name.toLowerCase()) {
                         return i
@@ -57,11 +57,75 @@ test.describe(`Add products to cart`, () => {
 test.describe(`Update or remove from cart`, () => {
 
     test("Can edit quantity of an item in the cart", async ({ page }) => {
+        const productSteps = new ProductSteps(page)
+        const checkoutPage = new CheckoutPage(page)
 
+        // Arrange
+        const product = await productSteps.addProductToCartByName('Combination Pliers')
+        await test.step('Go to checkout', async () => {
+            await checkoutPage.goto()
+        })
+
+        // Act
+        const cartItem = await test.step(`Find cart item for product ${product.id}`, async () => {
+            const cartItems = await checkoutPage.cart.cartItems()
+            const cartItem = await (async () => {
+                for (const i of cartItems) {
+                    const title = await i.title.textContent()
+                    if (title?.trim().toLowerCase() === product.name.toLowerCase()) {
+                        return i
+                    }
+                }
+                return undefined
+            })()
+
+            return cartItem
+        })
+        await test.step(`Update quantity for product ${product.id} to 2`, async () => {
+            await cartItem.quantity.fill('2')
+            await cartItem.quantity.press('Enter')
+        })
+
+        // Assert
+        await test.step(`Verify product total has updated`, async () => {
+            await expect(cartItem.quantity).toHaveValue('2')
+            await expect(cartItem.total).toContainText(String(product.price * 2))
+        })
     })
 
-    test("Can remove an item in the cart", async ({ page }) => {
+    test("Can remove an item in the cart", async ({ page, i18n }) => {
+        const productSteps = new ProductSteps(page)
+        const checkoutPage = new CheckoutPage(page)
 
+        // Arrange
+        const product = await productSteps.addProductToCartByName('Combination Pliers')
+        await test.step('Go to checkout', async () => {
+            await checkoutPage.goto()
+        })
+
+        // Act
+        const cartItem = await test.step(`Find cart item for product ${product.id}`, async () => {
+            const cartItems = await checkoutPage.cart.cartItems()
+            const cartItem = await (async () => {
+                for (const i of cartItems) {
+                    const title = await i.title.textContent()
+                    if (title?.trim().toLowerCase() === product.name.toLowerCase()) {
+                        return i
+                    }
+                }
+                return undefined
+            })()
+
+            return cartItem
+        })
+        await test.step(`Remove product ${product.id} from cart`, async () => {
+            await cartItem.removeFromCart()
+        })
+
+        // Assert
+        await test.step(`Verify cart is empty`, async () => {
+            await expect(checkoutPage.cart.noItemsMessage).toBeVisible()
+        })
     })
 })
 
