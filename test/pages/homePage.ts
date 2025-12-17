@@ -1,8 +1,8 @@
 import { Page } from "@playwright/test";
 import { ToolShopPage } from "./pageBase";
-import { ProductCard } from "../components/homepage/productCard";
-import { PaginationControls } from "../components/homepage/paginationControls";
-import { FilterControls } from "../components/homepage/filterControls";
+import { ProductCard } from "../components/home/productCard";
+import { PaginationControls } from "../components/home/paginationControls";
+import { FilterControls } from "../components/home/filterControls";
 
 export class HomePage extends ToolShopPage {
 

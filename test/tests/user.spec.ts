@@ -2,6 +2,7 @@ import { expect } from "@playwright/test";
 import { LoginSteps } from "../steps/loginSteps";
 import { test } from "../test";
 import { LoginPage } from "../pages/loginPage";
+import { TestUsers } from "../testUsers";
 
 test.use({
     i18n: async ({ i18n }, use) => {
@@ -48,11 +49,23 @@ test.describe(`Authentication`, () => {
             await expect(loginPage.loginError).toHaveText(i18n.t('pages:login:generic-error'))
         })
     })
-
 })
 
+
+
 test.describe(`View Order History`, () => {
+
+    const user = new TestUsers().customer2
+
+    test.use({
+      storageState: `.auth/${user.userId}.json`,
+    });
+
+    // For both of these tests, the setup should be done via the API. But I don't really want to faff with a second authentication mechanism for now, so I'll just use the UI
+
     test("Can view previous orders", async ({ page }) => {
+
+        // Arrange
 
     })
 

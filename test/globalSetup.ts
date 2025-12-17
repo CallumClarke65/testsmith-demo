@@ -5,7 +5,7 @@ import { LoginSteps } from "./steps/loginSteps";
 
 async function globalSetup() {
 
-  // Pre-authenticate all UI users
+  // Pre-authenticate users so that we don't have to waste time re-authenticating during tests
   const testUsers = new TestUsers()
   for (const [key, user] of Object.entries(testUsers)) {
     if(!(user instanceof TestUser)) {

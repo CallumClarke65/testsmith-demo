@@ -4,6 +4,8 @@ There's a huge number of bugs in the site intentionally left with bugs. Document
 
 I've approached my bug-hunting from a black-box perspective rather than allowing myself access to review the source code of the website under test (which I'd usually prefer to do).
 
+In addition to these bugs, I've included comments throughout my code where I feel selectors are lacking.
+
 | Issue | Description | Reproduction | Fix |
 | --- | --- | --- | --- |
 | Slowness in responses, often to the point of HTTP timeout | The publicly hosted instance of the test website does not have reliable response times. During test development, response times varied from sub-second to over 30s (causing a browser timeout). | Use the website at a busy time. (Or DDoS the host- naughty.) | Host should be looking into client-side caching further. I can't much- if any- evidence of cache instruction in response headers. That's a bit weird given the data in the site should be more-or-less static. At very least, the data should be permitted to be static for an hour or so- that would hugely aid in reducing request spam. |
