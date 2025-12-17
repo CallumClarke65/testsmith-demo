@@ -180,10 +180,10 @@ test.describe(`View Product Details`, () => {
 test.describe(`Search for product`, () => {
 
     test.use({
-      i18n: async ({ i18n }, use) => {   
-        await i18n.changeLanguage("en")
-        await use(i18n);
-      },
+        i18n: async ({ i18n }, use) => {
+            await i18n.changeLanguage("en")
+            await use(i18n);
+        },
     });
 
     test("Can successfully search for a valid product", async ({ page }) => {
@@ -196,13 +196,13 @@ test.describe(`Search for product`, () => {
         // Ideally we'd have the test call the API to get page 2 and then use that, but for speed we'll just inject the search term 
         const searchTerm = 'screwdriver'
         await test.step(`Search for ${searchTerm}`, async () => {
-            await homePage.searchInput.fill(searchTerm)
+            await homePage.filters.searchInput.fill(searchTerm)
             await Promise.all([
                 homePage.page.waitForResponse(resp =>
                     resp.url().includes(`${process.env.API_BASE_URL}/products/search`) &&
                     resp.status() === 200
                 ),
-                homePage.searchSubmit.click({ clickCount: 2,  })
+                homePage.filters.searchSubmit.click({ clickCount: 2, })
             ])
         })
 
@@ -217,24 +217,24 @@ test.describe(`Search for product`, () => {
             }
         })
     })
-    
+
 
     test("Informative message shown when there are no valid products", async ({ page, i18n }) => {
         // Arrange
         const homePage = new HomePage(page)
-        const productListFromApi = await navigateToHomePageAndWaitForProductsApi(homePage)
+        await navigateToHomePageAndWaitForProductsApi(homePage)
 
         // Act
         // Let's pick a search term that we're pretty confident isn't a product name!
         const searchTerm = 'hjfdsi ods'
         await test.step(`Search for ${searchTerm}`, async () => {
-            await homePage.searchInput.fill(searchTerm)
+            await homePage.filters.searchInput.fill(searchTerm)
             await Promise.all([
                 homePage.page.waitForResponse(resp =>
                     resp.url().includes(`${process.env.API_BASE_URL}/products/search`) &&
                     resp.status() === 200
                 ),
-                homePage.searchSubmit.click({ clickCount: 2 })
+                homePage.filters.searchSubmit.click({ clickCount: 2 })
             ])
         })
 
@@ -252,10 +252,87 @@ test.describe(`Search for product`, () => {
 
 test.describe(`Filtering products`, () => {
     test("Can successfully apply filters", async ({ page }) => {
+        // Arrange
+        const homePage = new HomePage(page)
+        const categoriesList: Categories[] = await test.step('Navigate to home page', async () => {
+            const [response] = await Promise.all([
+                homePage.page.waitForResponse(resp =>
+                    resp.url().includes(`${process.env.API_BASE_URL}/categories/tree`) &&
+                    resp.status() === 200
+                ),
+                homePage.goto(),
+            ]);
 
+            return (await response.json()) as Categories[];
+        });
+
+        // Act
+        const testCategory = categoriesList
+            .flatMap(c => [c, ...c.sub_categories])
+            .find(c => c.name === "Screwdriver")
+            // A bit hacky, because this data varies based on localisation
+            // However, we need to pick a category where we know that there is at least one product
+        await test.step(`Apply filter by category \'${testCategory.name}\'`, async () => {
+            await homePage.filters.categoryCheckbox(testCategory.id).check()
+        })
+
+        // Assert
+        const productsDisplayed = await test.step('Retrieve displayed products', async () => {
+            return await homePage.getAllVisibleProducts()
+        })
+
+        await test.step(`Verify that each displayed product is in the \'${testCategory.name}\' category`, async () => {
+            for (const product of productsDisplayed) {
+                await expect(product.name).toContainText(testCategory.name, { ignoreCase: true })
+                // HACK - this won't be true in general, but it is for the screwdrivers
+                // Ideally some part of the ProductCard component in the DOM would have an attribute containing the category id for the product, so we could assert by id instead
+            }
+        })
     })
 
     test("Can clear filters to return to the full list of products", async ({ page }) => {
+        // Arrange
+        const homePage = new HomePage(page)
+        const [categoriesList, productsList] = await test.step('Navigate to home page', async () => {
+            const [treeResponse, productsResponse] = await Promise.all([
+                homePage.page.waitForResponse(resp =>
+                    resp.url().includes(`${process.env.API_BASE_URL}/categories/tree`) &&
+                    resp.status() === 200
+                ),
+                homePage.page.waitForResponse(resp =>
+                    resp.url().includes(`${process.env.API_BASE_URL}/products`) &&
+                    resp.status() === 200
+                ),
+                homePage.goto(),
+            ]);
 
+            return [
+                (await treeResponse.json()) as Categories[],
+                (await productsResponse.json()).data as Product[],
+            ]
+        });
+        const testCategory = categoriesList[0]
+        await test.step(`Apply filter by category \'${testCategory.name}\'`, async () => {
+            await homePage.filters.categoryCheckbox(testCategory.id).check()
+        })
+
+        // Act
+        await test.step(`Remove filters`, async () => {
+            await homePage.filters.categoryCheckbox(testCategory.id).uncheck()
+            // This works because we know that only one filter is applied
+            // Honestly, the filters component could have a "clear all" button which we could use instead
+        })
+
+        // Assert
+        const productsDisplayed = await test.step('Retrieve displayed products', async () => {
+            return await homePage.getAllVisibleProducts()
+        })
+
+        await test.step(`Verify that the displayed products are equivalent to the product list before filters were initially applied`, async () => {
+            const displayedIds = productsDisplayed.map((p) => p.id)
+            const initialIdsFromApi = productsList.map((p) => p.id)
+
+            expect(displayedIds).toEqual(initialIdsFromApi)
+        })
     })
 })

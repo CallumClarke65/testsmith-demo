@@ -17,4 +17,9 @@ interface Product {
     file_name: string;
     title: string;
   };
+  category: {
+    id: string,
+    name: string,
+    slug: string
+  },
 }

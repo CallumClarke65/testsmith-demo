@@ -2,17 +2,19 @@ import { Page } from "@playwright/test";
 import { ToolShopPage } from "./pageBase";
 import { ProductCard } from "../components/homepage/productCard";
 import { PaginationControls } from "../components/homepage/paginationControls";
+import { FilterControls } from "../components/homepage/filterControls";
 
 export class HomePage extends ToolShopPage {
 
   readonly paginationControls: PaginationControls
-  readonly searchInput = this.page.locator('#search-query')
-  readonly searchSubmit = this.page.locator('[data-test="search-submit"]')
+  readonly filters: FilterControls
+
   readonly noResults = this.page.locator('[data-test="no-results"]')
 
   constructor(page: Page) {
     super(page, `${process.env.BASE_URL}`)
     this.paginationControls = new PaginationControls(this.page.locator('app-pagination'))
+    this.filters = new FilterControls(this.page.locator('#filters'))
   }
 
   async getAllVisibleProducts(): Promise<ProductCard[]> {
